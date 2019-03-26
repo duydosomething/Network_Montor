@@ -1,0 +1,106 @@
+{
+    "name": "http://linksys.com/jnap/networktraffic/IPTrafficStatistics", 
+    "desc": "", 
+    "actions": {
+        "BeginStatisticsTracking": {
+            "name": "http://linksys.com/jnap/networktraffic/BeginStatisticsTracking", 
+            "desc": "Turn statistics tracking on and zero out the byte counts for all active connections.  This action should be called prior to calling GetStatisticsByDevice. NOTE: Statistics tracking will not be accurate if CTF is enabled.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorStatisticsTrackingStarted": "Statistics tracking is already running", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetStatisticsByDevice": {
+            "name": "http://linksys.com/jnap/networktraffic/GetStatisticsByDevice", 
+            "desc": "Get network traffic statistics for each device on the LAN. This includes all traffic between devices on the LAN and traffic from the LAN to the WAN. NOTE: Statistics tracking must be enabled prior to calling this action.", 
+            "output": {
+                "ipStats": {
+                    "type": "IPClientStats", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": ""
+                }, 
+                "ipv6Stats": {
+                    "type": "IPv6ClientStats", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": ""
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorStatisticsTrackingStopped": "Statistics tracking has not been started", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }, 
+    "structs": {
+        "IPClientStats": {
+            "ipAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The client's IPv4 address. This is the IPv4 source address for all traffic tracked by this structure."
+            }, 
+            "bytesSent": {
+                "type": "long", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The number of bytes sent"
+            }, 
+            "bytesReceived": {
+                "type": "long", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The number of bytes received"
+            }
+        }, 
+        "IPv6ClientStats": {
+            "ipv6Address": {
+                "type": "IPv6Address", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The client's IPv6 address. This is the IPv6 source address for all traffic tracked by this structure."
+            }, 
+            "bytesSent": {
+                "type": "long", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The number of bytes sent"
+            }, 
+            "bytesReceived": {
+                "type": "long", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The number of bytes received"
+            }
+        }
+    }
+}

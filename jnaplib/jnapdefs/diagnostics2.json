@@ -1,0 +1,218 @@
+{
+    "name": "http://linksys.com/jnap/diagnostics/Diagnostics2", 
+    "desc": "This service provides access to diagnostic utilities.", 
+    "actions": {
+        "GetPingStatus": {
+            "name": "http://linksys.com/jnap/diagnostics/GetPingStatus", 
+            "desc": "This action gets the status of the ping test.", 
+            "output": {
+                "isRunning": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the ping test is currently running."
+                }, 
+                "pingLog": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The output of the pending or most recently completed ping test."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetTracerouteStatus": {
+            "name": "http://linksys.com/jnap/diagnostics/GetTracerouteStatus", 
+            "desc": "This action gets the status of the traceroute test.", 
+            "output": {
+                "isRunning": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the traceroute test is currently running."
+                }, 
+                "tracerouteLog": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The output of the pending or most recently completed traceroute test."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "RestorePreviousFirmware": {
+            "name": "http://linksys.com/jnap/diagnostics/RestorePreviousFirmware", 
+            "desc": "This action restores the previous firmware installed on the device.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "StartPing": {
+            "name": "http://linksys.com/jnap/diagnostics/StartPing", 
+            "desc": "This service provides access to diagnostic utilities. This action starts a ping test.", 
+            "input": {
+                "host": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The IP or URL to ping. This must be a valid IPv4 address in dotted-quad notation, a valid IPv6 address in or a valid host name as defined in RFCs 952 and 1123."
+                }, 
+                "packetSizeBytes": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The ping packet size in bytes. This value must be between 32 and 65500."
+                }, 
+                "pingCount": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The number of times to ping the host. If this value is not specified, the number of pings is unlimited and the test will continue until StopPing is called. If specified, this value must be greater than 0."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidHost": "The specified host is invalid.", 
+                    "ErrorInvalidPacketSizeBytes": "The specified packet size is invalid.", 
+                    "ErrorInvalidPingCount": "The specified ping count is invalid.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "StartTraceroute": {
+            "name": "http://linksys.com/jnap/diagnostics/StartTraceroute", 
+            "desc": "This action starts a traceroute test.", 
+            "input": {
+                "host": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The IP or URL to traceroute. This must be a valid IPv4 address in dot-decimal notation or a valid host name as defined in RFCs 952 and 1123."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidHost": "The specified host is invalid.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "StopPing": {
+            "name": "http://linksys.com/jnap/diagnostics/StopPing", 
+            "desc": "This action stops the currently running ping test, if any.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "StopTraceroute": {
+            "name": "http://linksys.com/jnap/diagnostics/StopTraceroute", 
+            "desc": "This action stops the currently running traceroute test, if any.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }
+}

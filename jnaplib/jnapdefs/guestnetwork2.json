@@ -1,0 +1,335 @@
+{
+    "name": "http://linksys.com/jnap/guestnetwork/GuestNetwork2", 
+    "desc": "", 
+    "actions": {
+        "GetGuestNetworkClients": {
+            "name": "http://linksys.com/jnap/guestnetwork/GetGuestNetworkClients", 
+            "desc": "This action gets information about the authorized clients on the guest network. Note that clients will only appear in this list for as long as they are authorized to be on the guest network.", 
+            "output": {
+                "clients": {
+                    "type": "AuthorizedClient", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of authorized clients."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetGuestNetworkSettings": {
+            "name": "http://linksys.com/jnap/guestnetwork/GetGuestNetworkSettings", 
+            "desc": "This action gets the wireless access point's guest network settings.", 
+            "output": {
+                "isGuestNetworkEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the wireless access point's guest network feature is currently enabled."
+                }, 
+                "broadcastGuestSSID": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether SSID broadcast for the guest network is currently enabled."
+                }, 
+                "guestSSID": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The guest network SSID. The maximum length of this value is 32 bytes."
+                }, 
+                "guestPassword": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The guest network password. Refer to the guestPasswordRestrictions member for specific restrictions placed on the guess network's password."
+                }, 
+                "maxSimultaneousGuests": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum number of users that are allowed on the guest network simultaneously."
+                }, 
+                "canEnableGuestNetwork": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the wireless access point's guest network feature can be enabled, given the wireless access point's current configuration. This information is necessary, for example, if the wireless access point is a dual-band router that only implements the guest network on one of its radios, and that radio is currently disabled. Note that this value will always be true when isGuestNetworkEnabled is true."
+                }, 
+                "guestPasswordRestrictions": {
+                    "type": "GuestPasswordRestrictions", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The restrictions that the wireless access point imposes on the guest password."
+                }, 
+                "maxSimultaneousGuestsLimit": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum value that the maxSimultaneousGuests parameter can ever be set to."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetGuestNetworkSettings2": {
+            "name": "http://linksys.com/jnap/guestnetwork/GetGuestNetworkSettings2", 
+            "desc": "This action gets the wireless access point's guest network settings.", 
+            "output": {
+                "ipAddress": {
+                    "type": "IPAddress", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The IP address of the gateway on the guest LAN. his is also the DHCP server's IP address."
+                }, 
+                "networkPrefixLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The network prefix length of the guest LAN."
+                }, 
+                "minNetworkPrefixLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The minimum supported network prefix length of the guest LAN."
+                }, 
+                "maxNetworkPrefixLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum supported network prefix length of the guest LAN."
+                }, 
+                "minAllowedLeaseHours": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The minimum allowed length, in hours, of a guest lease."
+                }, 
+                "maxAllowedLeaseHours": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum allowed length, in hours, of a guest lease."
+                }, 
+                "leaseHours": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The length, in hours, a guest is allowed on the guest LAN. This applies to both the guest's DHCP lease and the length of the guest's authorization to use the guest network."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetGuestNetworkSettings": {
+            "name": "http://linksys.com/jnap/guestnetwork/SetGuestNetworkSettings", 
+            "desc": "This action sets the wireless access point's guest network settings.", 
+            "input": {
+                "isGuestNetworkEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the wireless access point's guest network feature should be enabled."
+                }, 
+                "broadcastGuestSSID": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether SSID broadcast for the guest network should be enabled."
+                }, 
+                "guestSSID": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The new guest network SSID."
+                }, 
+                "guestPassword": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The new guest network password."
+                }, 
+                "maxSimultaneousGuests": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The new maximum number of users that should be allowed on the guest network simultaneously."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorCannotEnableGuestNetwork": "The guest network feature cannot be enabled due to the current configuration of the wireless access point. Clients should invoke the GetGuestNetworkSettings action and verify that the canEnableGuestNetwork output parameter is true before trying to enable the guest network.", 
+                    "ErrorGuestSSIDConflict": "The specified guest network SSID conflicts with another SSID on the wireless access point.", 
+                    "ErrorInvalidGuestPassword": "The specified guest network password is too short, too long, or contains characters that are not allowed.", 
+                    "ErrorInvalidGuestSSID": "The specified guest network SSID is too short, too long, or contains characters that are not allowed.", 
+                    "ErrorInvalidMaxSimultaneousGuests": "The specified maximum number of simultaneous guests is less than 1, or greater than the maximum allowed.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetGuestNetworkSettings2": {
+            "name": "http://linksys.com/jnap/guestnetwork/SetGuestNetworkSettings2", 
+            "desc": "This action sets the wireless access point's guest network settings.", 
+            "input": {
+                "ipAddress": {
+                    "type": "IPAddress", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The desired IP address of the gateway on the guest LAN.\n          \n          The following restrictions from RFC 5735 are applied to the guest LAN host address. The guest LAN host address must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.0\n              Subnetwork ID\n              RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.255\n              Subnetwork Broadcast Address\n              RFC 922, Section 7\n            \n          Additionally it must not conflict with the LAN subnetwork as returned by http://linksys.com/jnap/router/GetLANSettings."
+                }, 
+                "networkPrefixLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The desired network prefix length of the guest LAN. This value must be between the minNetworkPrefixLength and maxNetworkPrefixLength values returned by GetGuestNetworkSettings2."
+                }, 
+                "leaseHours": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The length, in hours, a guest is allowed on the guest LAN. This applies to both the guest's DHCP lease and the length of the guest's authorization to use the guest network."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidIPAddress": "The specified router IP address is not valid.", 
+                    "ErrorInvalidLeaseLength": "The specified guest lease length is outside the allowed range.", 
+                    "ErrorInvalidNetworkPrefixLength": "The specified network prefix is invalid or is not supported by the router.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }, 
+    "structs": {
+        "GuestPasswordRestrictions": {
+            "minLength": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The minimum length of the guest password, in bytes."
+            }, 
+            "maxLength": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The maximum length of the guest password, in bytes."
+            }, 
+            "allowedCharacters": {
+                "type": "UnicodeRange", 
+                "array": true, 
+                "optional": false, 
+                "desc": "A list of Unicode codepoint ranges, the union of which represents the complete set of characters that are allowed in the guest password. This array will always contain at least one item."
+            }
+        }, 
+        "AuthorizedClient": {
+            "ipAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the authorized client."
+            }, 
+            "macAddress": {
+                "type": "MACAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The MAC address of the authorized client."
+            }, 
+            "entryTime": {
+                "type": "DateTime", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The time the client's authorization window opened."
+            }, 
+            "expiryTime": {
+                "type": "DateTime", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The time the client's authorization window closes."
+            }
+        }, 
+        "UnicodeRange": {
+            "lowCodepoint": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The lowest Unicode codepoint in the range."
+            }, 
+            "highCodepoint": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The highest Unicode codepoint in the range."
+            }
+        }
+    }
+}

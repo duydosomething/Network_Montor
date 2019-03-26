@@ -1,0 +1,303 @@
+{
+    "name": "http://linksys.com/jnap/storage/SMBServer", 
+    "desc": "This service provides access to a device's SMB folders.", 
+    "actions": {
+        "CreateSMBFolder": {
+            "name": "http://linksys.com/jnap/storage/CreateSMBFolder", 
+            "desc": "This action creates a new SMB folder on the device.", 
+            "input": {
+                "name": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the SMB folder. This value must be unique. This value must be between 1 and 22 characters long and may only contain characters a-z, A-Z, 0-9, dash (-), and space ( )."
+                }, 
+                "partitionName": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the partition on which the SMB folder resides."
+                }, 
+                "path": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The path to the directory that corresponds to the SMB folder. Relative paths are interpreted as relative to the root directory of the partition."
+                }, 
+                "isReadOnly": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the SMB folder is read-only."
+                }, 
+                "groupsWithPermission": {
+                    "type": "string", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of groups that have permission to access the SMB folder. This list must always include the value \"admin\"."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorAdminGroupMustHavePermission": "The specified list of groups with permission does not contain \"admin\".", 
+                    "ErrorFolderExists": "An SMB folder with the specified name already exists.", 
+                    "ErrorInvalidName": "The specified name is invalid.", 
+                    "ErrorPathDoesNotExist": "The specified path does not exist.", 
+                    "ErrorTooManyFolders": "The SMB folder cannot be created because the maximum number of SMB folders has already been reached.", 
+                    "ErrorUnknownGroup": "One of the specified groups with permission does not exist.", 
+                    "ErrorUnknownPartition": "The specified partition does not correspond to any mounted partition.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "DeleteSMBFolder": {
+            "name": "http://linksys.com/jnap/storage/DeleteSMBFolder", 
+            "desc": "This action deletes a SMB folder on the device.", 
+            "input": {
+                "name": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the SMB folder."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorUnknownFolder": "The specified SMB folder does not exist.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "EditSMBFolder": {
+            "name": "http://linksys.com/jnap/storage/EditSMBFolder", 
+            "desc": "This action edits information about a SMB folder on the device.", 
+            "input": {
+                "name": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the SMB folder."
+                }, 
+                "partitionName": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the partition on which the SMB folder resides."
+                }, 
+                "path": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The path to the directory that corresponds to the SMB folder. Relative paths are interpreted as relative to the root directory of the partition."
+                }, 
+                "isReadOnly": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the SMB folder is read-only."
+                }, 
+                "groupsWithPermission": {
+                    "type": "string", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of groups that have permission to access the SMB folder. This list must always include the value \"admin\"."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorAdminGroupMustHavePermission": "The specified list of groups with permission does not contain \"admin\".", 
+                    "ErrorPathDoesNotExist": "The specified path does not exist.", 
+                    "ErrorUnknownFolder": "The specified SMB folder does not exist.", 
+                    "ErrorUnknownGroup": "One of the specified groups with permission does not exist.", 
+                    "ErrorUnknownPartition": "The specified partition does not correspond to any mounted partition.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetSMBFolders": {
+            "name": "http://linksys.com/jnap/storage/GetSMBFolders", 
+            "desc": "This action gets a list of the device's SMB folders. Folder names returned by this method are not guaranteed to be unique. This is to allow for detection of share name collisions due to external forces, such as a user inserting two USB drives configured with colliding share names.", 
+            "output": {
+                "smbFolders": {
+                    "type": "SharedFolder", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of SMB folders."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetSMBServerSettings": {
+            "name": "http://linksys.com/jnap/storage/GetSMBServerSettings", 
+            "desc": "This service provides access to a device's SMB folders. This action gets the device's SMB server settings.", 
+            "output": {
+                "workgroup": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The workgroup name."
+                }, 
+                "isAnonymousWriteEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether anonymous users can write to shared folders."
+                }, 
+                "maxSMBFolders": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "A platform-specific limit on the number of SMB shared folders. If this value is not present, there is no limit on the number of SMB shared folders."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetSMBServerSettings": {
+            "name": "http://linksys.com/jnap/storage/SetSMBServerSettings", 
+            "desc": "This action sets the device's SMB server settings.", 
+            "input": {
+                "workgroup": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The workgroup name. The workgroup name must be between 1 and 15 characters long and can only contain characters a-z, A-Z, 0-9, dash (-), and space ( )."
+                }, 
+                "isAnonymousWriteEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether anonymous users can write to SMB folders."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidWorkgroup": "The workgroup name is not valid.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }, 
+    "structs": {
+        "SharedFolder": {
+            "name": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The name of the shared folder."
+            }, 
+            "partitionName": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The name of the partition on which the shared folder resides."
+            }, 
+            "path": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The path to the directory that corresponds to the shared folder. Relative paths are interpreted as relative to the root directory of the partition."
+            }, 
+            "pathExists": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the path exists on the partition."
+            }, 
+            "isReadOnly": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the shared folder is read-only."
+            }, 
+            "groupsWithPermission": {
+                "type": "string", 
+                "array": true, 
+                "optional": false, 
+                "desc": "The list of groups that have permission to access the shared folder."
+            }
+        }
+    }
+}

@@ -1,0 +1,183 @@
+{
+    "name": "http://linksys.com/jnap/locale/Locale", 
+    "desc": "This service provides access to locale-related device properties and settings.", 
+    "actions": {
+        "GetLocale": {
+            "name": "http://linksys.com/jnap/locale/GetLocale", 
+            "desc": "This action gets the device's locale.", 
+            "output": {
+                "supportedLocales": {
+                    "type": "string", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of locales supported by the device, in RFC 3066 format."
+                }, 
+                "locale": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The current locale of the device, in RFC 3066 format."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetTimeSettings": {
+            "name": "http://linksys.com/jnap/locale/GetTimeSettings", 
+            "desc": "This action gets the device's time settings.", 
+            "output": {
+                "timeZoneID": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The ID of the device's current time zone."
+                }, 
+                "autoAdjustForDST": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the device adjusts its time zone automatically to account for Daylight Saving Time."
+                }, 
+                "supportedTimeZones": {
+                    "type": "TimeZone", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of supported offsets from UTC (in minutes) that the device's local time can be set to."
+                }, 
+                "currentTime": {
+                    "type": "DateTime", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The current time according to the device's local clock in UTC."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetLocale": {
+            "name": "http://linksys.com/jnap/locale/SetLocale", 
+            "desc": "This action sets the device's locale.", 
+            "input": {
+                "locale": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The desired locale of the device, in RFC 3066 format."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorUnsupportedLocale": "The specified locale is not supported by the device.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetTimeSettings": {
+            "name": "http://linksys.com/jnap/locale/SetTimeSettings", 
+            "desc": "This action sets the device's time settings.", 
+            "input": {
+                "timeZoneID": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The ID of the desired time zone for the device."
+                }, 
+                "autoAdjustForDST": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the device should adjust its time zone automatically to account for Daylight Saving Time. If the specified time zone does not observe DST, this value must be false."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorTimeZoneDoesNotObserveDST": "The value of the autoAdjustForDST parameter was specified as true, but the specified time zone does not observe DST.", 
+                    "ErrorUnknownTimeZone": "The specified time zone ID does not correspond to any of the time zones supported by the device.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }, 
+    "structs": {
+        "TimeZone": {
+            "timeZoneID": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "A unique identifier for the time zone."
+            }, 
+            "utcOffsetMinutes": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The number of minutes that the time zone is offset from Universal Coordinated Time (UTC). NOTE: This is a static offset in minutes from UTC in Standard Time. It does not adjust to take into account Daylight Saving Time."
+            }, 
+            "observesDST": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the time zone observes Daylight Saving Time (DST)."
+            }, 
+            "description": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "A human-readable description of the time zone."
+            }
+        }
+    }
+}

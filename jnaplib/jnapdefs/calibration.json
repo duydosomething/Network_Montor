@@ -1,0 +1,90 @@
+{
+    "name": "http://linksys.com/jnap/qos/calibration/Calibration", 
+    "desc": "This service provides access to Quality of Service calibration control settings.", 
+    "actions": {
+        "BeginDownloadCalibration": {
+            "name": "http://linksys.com/jnap/qos/calibration/BeginDownloadCalibration", 
+            "desc": "This action indicates the beginning of QoS download bandwidth calibration.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "BeginUploadCalibration": {
+            "name": "http://linksys.com/jnap/qos/calibration/BeginUploadCalibration", 
+            "desc": "This action indicates the beginning of QoS upload bandwidth calibration.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "EndDownloadCalibration": {
+            "name": "http://linksys.com/jnap/qos/calibration/EndDownloadCalibration", 
+            "desc": "This action indicates the end of QoS download bandwidth calibration.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "EndUploadCalibration": {
+            "name": "http://linksys.com/jnap/qos/calibration/EndUploadCalibration", 
+            "desc": "This action indicates the end of QoS upload bandwidth calibration.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }
+}

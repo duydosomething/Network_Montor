@@ -1,0 +1,243 @@
+{
+    "name": "http://linksys.com/jnap/wirelessap/AdvancedWirelessAP", 
+    "desc": "This service provides access to advanced properties and settings of the 802.11 wireless access point.", 
+    "actions": {
+        "GetAdvancedRadioInfo": {
+            "name": "http://linksys.com/jnap/wirelessap/GetAdvancedRadioInfo", 
+            "desc": "This action gets advanced settings for all of the wireless access point's wireless radios.", 
+            "output": {
+                "radios": {
+                    "type": "AdvancedRadioInfo", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of advanced settings for each radio."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetAdvancedRadioSettings": {
+            "name": "http://linksys.com/jnap/wirelessap/SetAdvancedRadioSettings", 
+            "desc": "This action sets advacned settings for one or more of the wireless access point's wireless radios.", 
+            "input": {
+                "radios": {
+                    "type": "NewAdvancedRadioSettings", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of advanced settings that should be set. Radios that are not included in this list will not have their settings changed unless they share a physical radio with one of the specified radios."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidBasicRate": "The wireless basic transmission rate for one or more radios is invalid.", 
+                    "ErrorInvalidBeaconInterval": "The beacon interval for one or more radios is invalid.", 
+                    "ErrorInvalidDTIMInterval": "The DTIM interval for one or more radios is invalid.", 
+                    "ErrorInvalidFragmentationThreshold": "The fragmentation threshold for one or more radios is invalid.", 
+                    "ErrorInvalidRTSThreshold": "The RTS threshold for one or more radios is invalid.", 
+                    "ErrorInvalidSidebandSelection": "The sideband selection for one or more radios is invalid.", 
+                    "ErrorInvalidTransmissionPower": "The transmission power value for one or more radios is invalid.", 
+                    "ErrorInvalidWEPAuthentication": "The WEP authentication for one or more radios is invalid.", 
+                    "ErrorUnknownRadio": "One of the specified radio IDs does not correspond to an actual radio in the access point.", 
+                    "ErrorUnsupportedNRate": "One of the specified wireless 802.11n transmission rates is not supported by that radio.", 
+                    "ErrorUnsupportedRate": "One of the specified wireless transmission rates is not supported by that radio.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }, 
+    "structs": {
+        "AdvancedRadioInfo": {
+            "radioID": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The unique identifier of the radio. This value never changes for a particular radio, and no two radios is the same wireless access point will have the same radio ID."
+            }, 
+            "supportedRatesMbps": {
+                "type": "int", 
+                "array": true, 
+                "optional": false, 
+                "desc": "The list of supported transmission rates, in megabits per second, that the radio supports. The presence of the value 0 in this list indicates that the radio supports transmission rate auto-selection."
+            }, 
+            "supportedNRatesMbps": {
+                "type": "string", 
+                "array": true, 
+                "optional": false, 
+                "desc": "The list of supported 802.11n transmission rates, in megabits per second, that the radio supports. The presence of the value 0 in this list indicates that the radio supports transmission rate auto-selection."
+            }, 
+            "settings": {
+                "type": "AdvancedRadioSettings", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The radio's current advanced settings."
+            }
+        }, 
+        "AdvancedRadioSettings": {
+            "apIsolation": {
+                "type": "bool", 
+                "array": false, 
+                "optional": true, 
+                "desc": "Is AP isolation enabled? If enabled, all traffic between wireless client stations will be dropped. In other words, wireless device to wireless device direct communication will fail."
+            }, 
+            "frameburst": {
+                "type": "bool", 
+                "array": false, 
+                "optional": true, 
+                "desc": "Is frameburst emabled? This will allow a wireless client station to send multiple frames between wait periods, thus increasing upload throughput. It is only recommend for WLANs with few (1-3) clients."
+            }, 
+            "ctsProtection": {
+                "type": "bool", 
+                "array": false, 
+                "optional": true, 
+                "desc": "Is CTS protection mode enabled? This value will ensure that 802.11b wireless client stations can connect to an 802.11g access point when 802.11g wireless client stations are also connected. This will negatively affect performance."
+            }, 
+            "rateMbps": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The fixed transmission rate, in Megabits per second. 0 indicates that the radio supports transmission rate auto-selection."
+            }, 
+            "nRateMbps": {
+                "type": "string", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The fixed 802.11n transmission rate, in Megabits per second. 0 indicates that the radio supports transmission rate auto-selection."
+            }, 
+            "basicRate": {
+                "type": "WirelessBasicTransmissionRate", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The basic transmission rate set."
+            }, 
+            "transmissionPower": {
+                "type": "WirelessTransmissionPower", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The relative wireless transmission power."
+            }, 
+            "greenfieldPreamble": {
+                "type": "bool", 
+                "array": false, 
+                "optional": true, 
+                "desc": "Is the Greenfield preamble enabled?"
+            }, 
+            "htDuplicate": {
+                "type": "bool", 
+                "array": false, 
+                "optional": true, 
+                "desc": "HT Duplicate"
+            }, 
+            "spaceTimeBlockCode": {
+                "type": "bool", 
+                "array": false, 
+                "optional": true, 
+                "desc": "Space Time Block Code"
+            }, 
+            "wirelessMultimediaPowerSave": {
+                "type": "bool", 
+                "array": false, 
+                "optional": true, 
+                "desc": "Wireless Multimedia Power Save"
+            }, 
+            "beaconIntervalMilliseconds": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The beacon interval, in milliseconds. This must be between 1 and 65535."
+            }, 
+            "dtimIntervalMilliseconds": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The DTIM interval. in milliseconds. This must be between 1 and 255."
+            }, 
+            "fragmentationThresholdBytes": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The fragmentation threshold, in bytes. This must be between 256 and 2346."
+            }, 
+            "rtsThresholdBytes": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The RTS threshold, in bytes. This must be between 0 and 2347."
+            }, 
+            "wepAuthentication": {
+                "type": "WEPAuthentication", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The WEP authentication type."
+            }, 
+            "sidebandSelection": {
+                "type": "SidebandSelection", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The sideband selection for 40MHz for bandwidth channels"
+            }
+        }, 
+        "NewAdvancedRadioSettings": {
+            "radioID": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The unique identifier of the radio."
+            }, 
+            "settings": {
+                "type": "AdvancedRadioSettings", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The radio's desired advanced settings."
+            }
+        }
+    }, 
+    "enums": {
+        "WirelessBasicTransmissionRate": {
+            "Default": "Use the default rate set for the currently configured wireless mode. This should be used to ensure compatibility with the widest range of devices.", 
+            "All": "Allow all data rates supported by the radio.", 
+            "802.11bCompatible": "Use only data rates supported by 802.11b devices (i.e. 1-2Mbps). This should only be used for backwards compatibility with legacy 802.11b devices."
+        }, 
+        "SidebandSelection": {
+            "Auto": "", 
+            "Upper": "", 
+            "Lower": ""
+        }, 
+        "WirelessTransmissionPower": {
+            "Low": "Low transmission power.", 
+            "Medium": "Medium transmission power.", 
+            "High": "High transmission power."
+        }, 
+        "WEPAuthentication": {
+            "Auto": "Automatically choose the authentication type for each wireless client station.", 
+            "Open": "Use open-system authentication. Wireless client stations will not be required to authenticate to complete the 802.11 association process.", 
+            "SharedKey": "Use shared key authentication. Wireless clients must prove ownership of the WEP shared secret as part of the 802.11 association process."
+        }
+    }
+}

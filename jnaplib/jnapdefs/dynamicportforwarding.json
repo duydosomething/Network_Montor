@@ -1,0 +1,545 @@
+{
+    "name": "http://linksys.com/jnap/dynamicportforwarding/DynamicPortForwarding", 
+    "desc": "This service provides functionality to manage dynamic port forwarding rule and dynamic IPv6 connection rule.", 
+    "actions": {
+        "AddDynamicIPv6ConnectionRule": {
+            "name": "http://linksys.com/jnap/dynamicportforwarding/AddDynamicIPv6ConnectionRule", 
+            "desc": "This action adds a dynamic IPv6 connection rule. It returns a ruleId which identifies the dynamic IPv6 connection rule.", 
+            "input": {
+                "rule": {
+                    "type": "DynamicIPv6ConnectionRule", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Dynamic IPv6 connection rule."
+                }
+            }, 
+            "output": {
+                "ruleUUID": {
+                    "type": "UUID", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "rule UUID identifies a dynamic IPv6 connection rule."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorDescriptionTooLong": "The specified description was longer than the maximum allowed length.", 
+                    "ErrorInvalidExternalPort": "One of the specified ports was not between 0 and 65535.", 
+                    "ErrorInvalidExternalPortRange": "One of the specified port ranges contained a first value that was greater than its last value.", 
+                    "ErrorRuleAlreadyExist": "The rule specified for the IPv6 connection already exists", 
+                    "ErrorSessionDoesNotExist": "The specified session does not exit.", 
+                    "ErrorTooManyRules": "Can not add this rule since the number of existing rules is already the maximum number of rules allowed.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "AddDynamicPortRangeForwardingRule": {
+            "name": "http://linksys.com/jnap/dynamicportforwarding/AddDynamicPortRangeForwardingRule", 
+            "desc": "This action adds a dynamic port range forwarding rule. It returns a ruleId which identifies the dynamic port forwarding rule.", 
+            "input": {
+                "rule": {
+                    "type": "DynamicPortRangeForwardingRule", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Dynamic port range forwarding rule."
+                }
+            }, 
+            "output": {
+                "ruleUUID": {
+                    "type": "UUID", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "rule UUID identifies a dynamic port range forwarding rule."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorDescriptionTooLong": "The specified description was longer than the maximum allowed length.", 
+                    "ErrorInvalidExternalPort": "One of the specified external ports was not between 0 and 65535.", 
+                    "ErrorInvalidExternalPortRange": "The specified first external port was greater than the specified last external port.", 
+                    "ErrorInvalidInternalServerIPAddress": "The specified internal server IP address was invalid.", 
+                    "ErrorRuleAlreadyExist": "The rule specified for the dynamic port range forwarding already exists.", 
+                    "ErrorSessionDoesNotExist": "The specified session does not exit.", 
+                    "ErrorTooManyRules": "Can not add this rule since the number of existing rules is already the maximum number of rules allowed.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "AddDynamicSinglePortForwardingRule": {
+            "name": "http://linksys.com/jnap/dynamicportforwarding/AddDynamicSinglePortForwardingRule", 
+            "desc": "This action adds a dynamic single-port forwarding rule. It returns a ruleID which identifies the dynamic port forwarding rule.", 
+            "input": {
+                "rule": {
+                    "type": "DynamicSinglePortForwardingRule", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Dynamic single-port forwarding rule."
+                }
+            }, 
+            "output": {
+                "ruleUUID": {
+                    "type": "UUID", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "rule UUID identifies a dynamic port forwarding rule."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorDescriptionTooLong": "The specified description was longer than the maximum allowed length.", 
+                    "ErrorInvalidExternalPort": "The specified external ports was not between 0 and 65535.", 
+                    "ErrorInvalidInternalPort": "The specified internal server port was not between 0 and 65535.", 
+                    "ErrorInvalidInternalServerIPAddress": "The specified internal server IP address was invalid.", 
+                    "ErrorRuleAlreadyExist": "The rule specified for the dynamic single-port forwarding already exists.", 
+                    "ErrorSessionDoesNotExist": "The specified session does not exit.", 
+                    "ErrorTooManyRules": "Can not add this rule since the number of existing rules is already the maximum number of rules allowed.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetDynamicIPv6ConnectionRules": {
+            "name": "http://linksys.com/jnap/dynamicportforwarding/GetDynamicIPv6ConnectionRules", 
+            "desc": "This action returns a list of active dynamic IPv6 connections Rule Info", 
+            "output": {
+                "rules": {
+                    "type": "DynamicIPv6ConnectionRuleInfo", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of active dynamic IPv6 rule info."
+                }, 
+                "maxDescriptionLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum length, in bytes, of the description member of a dynamic IPv6 connection."
+                }, 
+                "maxRules": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum number of dynamic IPv6 connections rule that can exist simultaneously."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetDynamicPortRangeForwardingRules": {
+            "name": "http://linksys.com/jnap/dynamicportforwarding/GetDynamicPortRangeForwardingRules", 
+            "desc": "This action returns a list of active dynamic port range forwarding rule info.", 
+            "output": {
+                "rules": {
+                    "type": "DynamicPortRangeForwardingRuleInfo", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of active dynamic port range forwarding rules."
+                }, 
+                "maxDescriptionLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum length, in bytes, of the description member of a dynamic port range forwarding rule."
+                }, 
+                "maxRules": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum number of dynamic port range forwarding rules that can exist simultaneously."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetDynamicSinglePortForwardingRules": {
+            "name": "http://linksys.com/jnap/dynamicportforwarding/GetDynamicSinglePortForwardingRules", 
+            "desc": "This action returns a list of active dynamic single-port forwarding rules.", 
+            "output": {
+                "rules": {
+                    "type": "DynamicSinglePortForwardingRuleInfo", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of active dynamic single-port forwarding rule info."
+                }, 
+                "maxDescriptionLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum length, in bytes, of the description member of a dynamic single-port forwarding rule."
+                }, 
+                "maxRules": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum number of dynamic single-port forwarding rules that can exist simultaneously."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "RemoveDynamicIPv6ConnectionRule": {
+            "name": "http://linksys.com/jnap/dynamicportforwarding/RemoveDynamicIPv6ConnectionRule", 
+            "desc": "This action removes a dynamic IPv6 connection rule. The input is a ruleId which identifies a dynamic IPv6 connection rule.", 
+            "input": {
+                "ruleUUID": {
+                    "type": "UUID", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "rule UUID identifies a dynamic IPv6 connection rule."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorUnknownRule": "The specified rule does not exist.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "RemoveDynamicPortRangeForwardingRule": {
+            "name": "http://linksys.com/jnap/dynamicportforwarding/RemoveDynamicPortRangeForwardingRule", 
+            "desc": "This action removes a dynamic port range forwarding rule. The input is a ruleId which identifies a dynamic port range forwarding rule.", 
+            "input": {
+                "ruleUUID": {
+                    "type": "UUID", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "rule UUID identifies a dynamic port range forwarding rule."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorUnknownRule": "The specified rule does not exist.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "RemoveDynamicSinglePortForwardingRule": {
+            "name": "http://linksys.com/jnap/dynamicportforwarding/RemoveDynamicSinglePortForwardingRule", 
+            "desc": "This action removes a dynamic single-port forwarding rule. The input is a ruleId which identifies a dynamic port forwarding rule.", 
+            "input": {
+                "ruleUUID": {
+                    "type": "UUID", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "rule UUID identifies a dynamic single-port forwarding rule."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorUnknownRule": "The specified rule does not exist.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }, 
+    "structs": {
+        "DynamicIPv6ConnectionRuleInfo": {
+            "ruleUUID": {
+                "type": "UUID", 
+                "array": false, 
+                "optional": false, 
+                "desc": "A rule UUID identifies a dynamic IPv6 connection."
+            }, 
+            "rule": {
+                "type": "DynamicIPv6ConnectionRule", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Dynamic IPv6 connection rule."
+            }
+        }, 
+        "DynamicSinglePortForwardingRule": {
+            "isEnabled": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the rule is enabled. Currently only true is accepted"
+            }, 
+            "srcIPAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of source which requests dynamic single-port forwarding."
+            }, 
+            "externalPort": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The first external port in the range that should be forwarded. This value must be between 0 and 65535."
+            }, 
+            "protocol": {
+                "type": "IPProtocol", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The protocol that should be forwarded."
+            }, 
+            "internalServerIPAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the destination server on the LAN. This value must be in the same subnet as the router's LAN host address (as defined by SetLANSettings), but not equal to the router's LAN host address and not fall inside the following reserved IP Addresses: 192.168.1.0 or 192.168.1.255"
+            }, 
+            "internalPort": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The first internal port in the range that should be forwarded. This value must be between 0 and 65535."
+            }, 
+            "description": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "A human-readable description of the rule."
+            }, 
+            "sessionUUID": {
+                "type": "UUID", 
+                "array": false, 
+                "optional": true, 
+                "desc": "A session UUID identifies a dynamic session which the rule belongs to."
+            }
+        }, 
+        "DynamicPortRangeForwardingRule": {
+            "isEnabled": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the rule is enabled. Currently only true is accepted"
+            }, 
+            "srcIPAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of source which requests dynamic port range forwarding."
+            }, 
+            "firstExternalPort": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The first external port in the range that should be forwarded. This value must be between 0 and 65535."
+            }, 
+            "lastExternalPort": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The last external port in the range that should be forwarded. This value must be between 0 and 65535. lastExternalPort >= firstExternalPort"
+            }, 
+            "protocol": {
+                "type": "IPProtocol", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The protocol that should be forwarded."
+            }, 
+            "internalServerIPAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the destination server on the LAN. This value must be in the same subnet as the router's LAN host address (as defined by SetLANSettings), but not equal to the router's LAN host address and not fall inside the following reserved IP Addresses: 192.168.1.0 or 192.168.1.255"
+            }, 
+            "description": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "A human-readable description of the rule."
+            }, 
+            "sessionUUID": {
+                "type": "UUID", 
+                "array": false, 
+                "optional": true, 
+                "desc": "A session UUID identifies a dynamic session which the rule belongs to."
+            }
+        }, 
+        "DynamicIPv6ConnectionRule": {
+            "isEnabled": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the rule is enabled. Currently only true is accepted"
+            }, 
+            "srcIPv6Address": {
+                "type": "IPv6Address", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IPv6 address of source which requests dynamic IPv6 connection."
+            }, 
+            "firstExternalPort": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The first external port in the range that should be forwarded. This value must be between 0 and 65535."
+            }, 
+            "lastExternalPort": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The last external port in the range that should be forwarded. This value must be between 0 and 65535. lastExternalPort >= firstExternalPort."
+            }, 
+            "destIPv6Address": {
+                "type": "IPv6Address", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IPv6 address of the desination for which the traffic should be allowed."
+            }, 
+            "description": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "A human-readable description of the rule."
+            }, 
+            "sessionUUID": {
+                "type": "UUID", 
+                "array": false, 
+                "optional": true, 
+                "desc": "A session UUID which associates with the rule."
+            }
+        }, 
+        "DynamicSinglePortForwardingRuleInfo": {
+            "ruleUUID": {
+                "type": "UUID", 
+                "array": false, 
+                "optional": false, 
+                "desc": "A rule UUID identifies a dynamic port forwarding rule."
+            }, 
+            "rule": {
+                "type": "DynamicSinglePortForwardingRule", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Dynamic single-port forwarding rule"
+            }
+        }, 
+        "DynamicPortRangeForwardingRuleInfo": {
+            "ruleUUID": {
+                "type": "UUID", 
+                "array": false, 
+                "optional": false, 
+                "desc": "A rule UUID identifies a dynamic port forwarding rule."
+            }, 
+            "rule": {
+                "type": "DynamicPortRangeForwardingRule", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Dynamic port range forwarding rule."
+            }
+        }
+    }, 
+    "enums": {
+        "IPProtocol": {
+            "TCP": "The TCP protocol.", 
+            "UDP": "The UDP protocol.", 
+            "Both": "Both the TCP and UDP protocols."
+        }
+    }
+}

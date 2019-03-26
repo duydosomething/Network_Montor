@@ -1,0 +1,88 @@
+{
+    "name": "http://linksys.com/jnap/routerupnp/RouterUPnP", 
+    "desc": "This service provides access to a router's UPnP settings.", 
+    "actions": {
+        "GetUPnPSettings": {
+            "name": "http://linksys.com/jnap/routerupnp/GetUPnPSettings", 
+            "desc": "This service provides access to a router's UPnP settings. This action gets the router's current UPnP settings.", 
+            "output": {
+                "isUPnPEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether UPnP is currently enabled on the router."
+                }, 
+                "canUsersConfigure": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether users are currently allowed to configure UPnP."
+                }, 
+                "canUsersDisableWANAccess": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether users are currently allowed to disable WAN access."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetUPnPSettings": {
+            "name": "http://linksys.com/jnap/routerupnp/SetUPnPSettings", 
+            "desc": "This action sets the router's UPnP settings.", 
+            "input": {
+                "isUPnPEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether UPnP should be enabled on the router."
+                }, 
+                "canUsersConfigure": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether users should be allowed to configure UPnP."
+                }, 
+                "canUsersDisableWANAccess": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether users should be allowed to disable WAN access."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "name": "http://linksys.com/jnap/notification/Notification", 
+    "desc": "This service provides a mechanism to provision network notifications.", 
+    "actions": {
+        "GetDeviceNotificationSettings": {
+            "name": "http://linksys.com/jnap/notification/GetDeviceNotificationSettings", 
+            "desc": "This service provides a mechanism to provision network notifications. This action returns the router's device notification state.", 
+            "output": {
+                "isDeviceNotificationEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether device notification is currently enabled."
+                }, 
+                "deviceIDs": {
+                    "type": "UUID", 
+                    "array": true, 
+                    "optional": true, 
+                    "desc": "A list of device IDs for which notifications are enabled. If not present, notifications will apply to all devices."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetDeviceNotificationSettings": {
+            "name": "http://linksys.com/jnap/notification/SetDeviceNotificationSettings", 
+            "desc": "This action allows the enabling/disabling of device connection notifications.", 
+            "input": {
+                "isDeviceNotificationEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether device notification should be enabled."
+                }, 
+                "deviceIDs": {
+                    "type": "UUID", 
+                    "array": true, 
+                    "optional": true, 
+                    "desc": "A list of device IDs for which notifications are enabled. If not present, notifications will apply to all devices."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorUnknownDevice": "The device does not match any known device.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }
+}

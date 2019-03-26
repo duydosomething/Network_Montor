@@ -1,0 +1,623 @@
+{
+    "name": "http://linksys.com/jnap/storage/Storage", 
+    "desc": "This service provides access to a device's mounted partitions.", 
+    "actions": {
+        "CreateDirectory": {
+            "name": "http://linksys.com/jnap/storage/CreateDirectory", 
+            "desc": "This action creates a directory on a mounted partition.", 
+            "input": {
+                "partitionName": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the mounted partition to create the directory on."
+                }, 
+                "path": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the directory to create. This can include parent directories which will be created if needed. Each directory must must conform to the following requirements:\n          must be between 1 and 22 characters long\n            must not begin or end with a space\n            must not begin with a /\n            must not be . or ..\n            must not contain any ASCII control characters (U+0000 - U+001F)\n            must not contain any of the following characters: \\ ? * : | < > \"\n            must not be an existing non-directly file\n          \n          Relative paths are interpreted as relative to the root directory of the partition."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidPath": "The specified directory is not valid.", 
+                    "ErrorUnknownPartition": "The specified partition does not correspond to any mounted partition.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "CreateGroup": {
+            "name": "http://linksys.com/jnap/storage/CreateGroup", 
+            "desc": "This action creates a new user group of the device.", 
+            "input": {
+                "name": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the group. This value must be between 1 and 12 characters long and may only contain characters a-z, A-Z, 0-9, dash(-), and underscore (_). Group names must be unique."
+                }, 
+                "description": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The description of the group. This value must be between 0 and 63 characters long and may only contain characters a-Z, A-Z, 0-9, dash (-), and space ( )."
+                }, 
+                "hasWritePermissions": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the group has write permissions."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorGroupExists": "A group with the specified name already exists.", 
+                    "ErrorInvalidDescription": "The specified description is invalid.", 
+                    "ErrorInvalidName": "The specified name is invalid.", 
+                    "ErrorTooManyGroups": "The group cannot be created because the maximum number of groups has already been reached.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "CreateUser": {
+            "name": "http://linksys.com/jnap/storage/CreateUser", 
+            "desc": "This action creates a new user of the device.", 
+            "input": {
+                "name": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the user. This value must be between 1 and 20 characters long and may only contain characters a-z, A-Z, 0-9, dash(-), and underscore (_). User names must be unique."
+                }, 
+                "fullName": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The full name of the user. This value must be between 0 and 63 characters long and may only contain characters a-Z, A-Z, 0-9, dash (-), and space ( )."
+                }, 
+                "description": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The description of the user. This value must be between 0 and 63 characters long and may only contain characters a-Z, A-Z, 0-9, dash (-), and space ( )."
+                }, 
+                "memberOfGroup": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the group that the user is a member of."
+                }, 
+                "isEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the user's account is currently enabled."
+                }, 
+                "password": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The user's password. This value must be between 4 and 64 characters long and may only contain characters a-Z, A-Z, 0-9."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidDescription": "The specified description is invalid.", 
+                    "ErrorInvalidFullName": "The specified full name is invalid.", 
+                    "ErrorInvalidName": "The specified name is invalid.", 
+                    "ErrorInvalidPassword": "The specified password is invalid.", 
+                    "ErrorTooManyUsers": "The user cannot be created because the maximum number of user accounts has already been reached.", 
+                    "ErrorUnknownMemberOfGroup": "The specified group does not exist.", 
+                    "ErrorUserExists": "A user with the specified name already exists.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "DeleteGroup": {
+            "name": "http://linksys.com/jnap/storage/DeleteGroup", 
+            "desc": "This action deletes a group of the device.", 
+            "input": {
+                "name": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the group."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorCannotDeleteGroup": "The specified group is not deletable.", 
+                    "ErrorUnknownGroup": "There is no group with the specified name.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "DeleteUser": {
+            "name": "http://linksys.com/jnap/storage/DeleteUser", 
+            "desc": "This action deletes a user of the device.", 
+            "input": {
+                "name": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the user."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorCannotDeleteUser": "The specified user is not deletable.", 
+                    "ErrorUnknownUser": "There is no user with the specified name.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "EditGroup": {
+            "name": "http://linksys.com/jnap/storage/EditGroup", 
+            "desc": "This action edits information about a group of the device.", 
+            "input": {
+                "name": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the group."
+                }, 
+                "description": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The description of the group. This value must be between 0 and 63 characters long and may only contain characters a-Z, A-Z, 0-9, dash (-), and space ( )."
+                }, 
+                "hasWritePermissions": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the group has write permissions."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorCannotEditGroup": "The specified group is not editable.", 
+                    "ErrorInvalidDescription": "The specified description is invalid.", 
+                    "ErrorUnknownGroup": "There is no group with the specified name.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "EditUser": {
+            "name": "http://linksys.com/jnap/storage/EditUser", 
+            "desc": "This action edits information about a user of the device.", 
+            "input": {
+                "name": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the user."
+                }, 
+                "fullName": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The full name of the user. This value must be between 0 and 63 characters long and may only contain characters a-Z, A-Z, 0-9, dash (-), and space ( )."
+                }, 
+                "description": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The description of the user. This value must be between 0 and 63 characters long and may only contain characters a-Z, A-Z, 0-9, dash (-), and space ( )."
+                }, 
+                "memberOfGroup": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the group that the user is a member of."
+                }, 
+                "isEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the user's account is currently enabled."
+                }, 
+                "password": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The user's password. This value must be between 4 and 64 characters long and may only contain characters a-Z, A-Z, 0-9."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorCannotEditUser": "The specified user is not editable.", 
+                    "ErrorInvalidDescription": "The specified description is invalid.", 
+                    "ErrorInvalidFullName": "The specified full name is invalid.", 
+                    "ErrorInvalidPassword": "The specified password is invalid.", 
+                    "ErrorUnknownMemberOfGroup": "The specified group does not exist.", 
+                    "ErrorUnknownUser": "There is no user with the specified name.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetGroups": {
+            "name": "http://linksys.com/jnap/storage/GetGroups", 
+            "desc": "This action gets a list of the device's groups.", 
+            "output": {
+                "groups": {
+                    "type": "Group", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of groups."
+                }, 
+                "maxGroups": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum number of groups that can exist simultaneously."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetMountedPartitions": {
+            "name": "http://linksys.com/jnap/storage/GetMountedPartitions", 
+            "desc": "This action gets information about the device's mounted partitions.", 
+            "output": {
+                "partitions": {
+                    "type": "Partition", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of the device's mounted partitions."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetUsers": {
+            "name": "http://linksys.com/jnap/storage/GetUsers", 
+            "desc": "This action gets a list of the device's users.", 
+            "output": {
+                "users": {
+                    "type": "User", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of users."
+                }, 
+                "maxUsers": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum number of users that can exist simultaneously."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "ListSubdirectories": {
+            "name": "http://linksys.com/jnap/storage/ListSubdirectories", 
+            "desc": "This action gets the list of subdirectories in a directory on a mounted partition.", 
+            "input": {
+                "partitionName": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the mounted partition."
+                }, 
+                "path": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The path to the parent directory whose subdirectories should be listed. Relative paths are interpreted as relative to the root directory of the partition."
+                }
+            }, 
+            "output": {
+                "subdirectories": {
+                    "type": "string", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of subdirectories in the specified directory. The items in the list are directory names, not paths. The path to a subdirectory can be computed by prefixing its name with the value of the path parameter."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorPathDoesNotExist": "The specified path does not exist.", 
+                    "ErrorUnknownPartition": "The specified partition does not correspond to any mounted partition.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "RemoveStorageDevice": {
+            "name": "http://linksys.com/jnap/storage/RemoveStorageDevice", 
+            "desc": "This action removes a physical storage device, unmounting all partitions on the device and making it safe for removal.", 
+            "input": {
+                "storageDeviceName": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The name of the physical storage device. This value is associated with one or more partitions and can be retrieved using the GetMountedPartitions method."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorUnknownStorageDevice": "The specified storage device does not exist on the system.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }, 
+    "structs": {
+        "Partition": {
+            "partitionName": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The name the partition. This value has is merely a unique identifier for a specific partition, to be used as an input argument to various methods."
+            }, 
+            "storageDeviceName": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The name of the physical storage device on which this partition is located. This value is merely a unique identifier for a specific physical storage device, to be used as an input argument to various methods."
+            }, 
+            "label": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The label of the partition."
+            }, 
+            "fileSystem": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The file system used on the partition."
+            }, 
+            "usedKB": {
+                "type": "long", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The amount of space currently used on the partition, in kilobytes."
+            }, 
+            "availableKB": {
+                "type": "long", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The amount of free space currently available on the partition, in kilobytes."
+            }
+        }, 
+        "User": {
+            "name": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The name of the user. This value must be between 1 and 20 characters long. User names must be unique."
+            }, 
+            "fullName": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The full name of the user. This value must be between 0 and 63 characters long."
+            }, 
+            "description": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The description of the user. This value must be between 0 and 63 characters long."
+            }, 
+            "memberOfGroup": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The name of the group that the user is a member of."
+            }, 
+            "isEnabled": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the user's account is currently enabled."
+            }, 
+            "isEditable": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the user can be edited. Some users such as admin cannot be edited."
+            }, 
+            "isDeletable": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the user can be deleted. Some users such as admin and guest cannot be deleted."
+            }
+        }, 
+        "Group": {
+            "name": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The name of the group. This value must be between 1 and 12 characters long. Group names must be unique."
+            }, 
+            "description": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The description of the group. This value must be between 0 and 63 characters long."
+            }, 
+            "hasWritePermissions": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether members of the group have read-write permission. If this value is false, members of the group have read-only permission."
+            }, 
+            "isEditable": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the group can be edited. Some groups such as admin and guest cannot be edited."
+            }, 
+            "isDeletable": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the group can be deleted. Some groups such as admin and guest cannot be deleted."
+            }
+        }
+    }
+}

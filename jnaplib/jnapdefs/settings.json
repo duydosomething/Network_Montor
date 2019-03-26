@@ -1,0 +1,64 @@
+{
+    "name": "http://linksys.com/jnap/ui/Settings", 
+    "desc": "This service provides access to UI-related settings.", 
+    "actions": {
+        "GetRemoteSetting": {
+            "name": "http://linksys.com/jnap/ui/GetRemoteSetting", 
+            "desc": "This service provides access to UI-related settings stored in the router's internal state. This action gets the remote setting.", 
+            "output": {
+                "isEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "If enabled, UI resources are proxyed from the cloud."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetRemoteSetting": {
+            "name": "http://linksys.com/jnap/ui/SetRemoteSetting", 
+            "desc": "This action sets the remote setting.", 
+            "input": {
+                "isEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "If enabled, UI resources are proxyed from the cloud."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }
+}

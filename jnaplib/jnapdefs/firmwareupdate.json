@@ -1,0 +1,229 @@
+{
+    "name": "http://linksys.com/jnap/firmwareupdate/FirmwareUpdate", 
+    "desc": "This service provides access to firmware update settings on a device.", 
+    "actions": {
+        "GetFirmwareUpdateSettings": {
+            "name": "http://linksys.com/jnap/firmwareupdate/GetFirmwareUpdateSettings", 
+            "desc": "This action gets the device's firmware update settings.", 
+            "output": {
+                "updatePolicy": {
+                    "type": "FirmwareUpdatePolicy", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the device should automatically check for and install firmware updates."
+                }, 
+                "autoUpdateWindow": {
+                    "type": "FirmwareAutoUpdateWindow", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The period of time each day when the device will automatically check for and install firmware updates. Note that this value has no effect when the value of the updatePolicy output parameter is Manual."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetFirmwareUpdateStatus": {
+            "name": "http://linksys.com/jnap/firmwareupdate/GetFirmwareUpdateStatus", 
+            "desc": "This action gets information about any available firmware update that the device is aware of, and the status of any pending firmware update operation.", 
+            "output": {
+                "lastSuccessfulCheckTime": {
+                    "type": "DateTime", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The last time that the device successfully checked for available firmware updates."
+                }, 
+                "availableUpdate": {
+                    "type": "FirmwareUpdate", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "Information about an available firmware update. This value will not be present if no update is currently available, or if the firmware update service on the device is not aware that one is available."
+                }, 
+                "pendingOperation": {
+                    "type": "FirmwareUpdateOperationStatus", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "Information about the firmware update operation, if any, that is currently in progress. This value will not be present if no firmware update operation is in progress."
+                }, 
+                "lastOperationFailure": {
+                    "type": "FirmwareUpdateOperationFailure", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The reason why the most recent attempted firmware update operation failed. This value will not be present if the pendingOperation parameter is present, or if the most recent firmware update operation succeeded."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetFirmwareUpdateSettings": {
+            "name": "http://linksys.com/jnap/firmwareupdate/SetFirmwareUpdateSettings", 
+            "desc": "This action sets the device's firmware update settings.", 
+            "input": {
+                "updatePolicy": {
+                    "type": "FirmwareUpdatePolicy", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the device should automatically check for and install firmware updates."
+                }, 
+                "autoUpdateWindow": {
+                    "type": "FirmwareAutoUpdateWindow", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The period of time each day when the device should automatically check for and install firmware updates. Note that this value has no effect when the value of the updatePolicy output parameter is Manual."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidAutoUpdateWindowDurationMinutes": "The value specified for the autoUpdateWindow parameter's durationMinutes member was not between 0 and 1440.", 
+                    "ErrorInvalidAutoUpdateWindowStartMinute": "The value specified for the autoUpdateWindow parameter's startMinute member was not between 0 and 1439.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "UpdateFirmwareNow": {
+            "name": "http://linksys.com/jnap/firmwareupdate/UpdateFirmwareNow", 
+            "desc": "This action checks for an available firmware update and optionally installs it.", 
+            "input": {
+                "onlyCheck": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the device should only check for an available firmware update, but not install it."
+                }, 
+                "updateServerURL": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "An alternative server URL to use for the firmware update. This URL is used only for the current firmware update attempt. If this value is not present, the firmware update service uses the default server URL, as defined by the device manufacturer."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidUpdateServerURL": "The value specified for the updateServerURL did not have protocol HTTP or HTTPS.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }, 
+    "structs": {
+        "FirmwareAutoUpdateWindow": {
+            "startMinute": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The minute of the day, in the device's local time, when the automatic firmware update window begins. For example, if this value is set to 1800, the device will perform automatic firmware update checks at 3:00 AM. This value must be between 0 (12:00 AM) and 1439 (11:59 PM)."
+            }, 
+            "durationMinutes": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The duration, in seconds, of the automatic firmware update window. This value must be between 0 and 1440."
+            }
+        }, 
+        "FirmwareUpdate": {
+            "firmwareVersion": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The firmware version."
+            }, 
+            "firmwareDate": {
+                "type": "DateTime", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The date associated with the firmware."
+            }, 
+            "description": {
+                "type": "string", 
+                "array": false, 
+                "optional": true, 
+                "desc": "An optional description of the firmware update."
+            }
+        }, 
+        "FirmwareUpdateOperationStatus": {
+            "operation": {
+                "type": "FirmwareUpdateOperation", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The firmware update operation being performed."
+            }, 
+            "progressPercent": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The progress of the firmware update operation, as a percentage. This value is always between 0 and 100."
+            }
+        }
+    }, 
+    "enums": {
+        "FirmwareUpdatePolicy": {
+            "Manual": "The device will not automatically check for or install firmware updates.", 
+            "AutomaticallyCheck": "The device will automatically check for firmware updates, but will not automatically install them.", 
+            "AutomaticallyCheckAndInstall": "The device will automatically check for and install firmware updates."
+        }, 
+        "FirmwareUpdateOperationFailure": {
+            "CheckFailed": "The firmware update service encountered an error while attempting to check for a firmware update.", 
+            "DownloadFailed": "The firmware update service encountered an error while attempting to download a firmware update.", 
+            "InstallFailed": "The firmware update service encountered an error while attempting to install a firmware update."
+        }, 
+        "FirmwareUpdateOperation": {
+            "Checking": "The firmware update service is checking for available firmware updates.", 
+            "Downloading": "The firmware update service is currently downloading a firmware update.", 
+            "Installing": "The firmware update service is currently installing a firmware update.", 
+            "Rebooting": "The device is about to reboot after installing a firmware update."
+        }
+    }
+}

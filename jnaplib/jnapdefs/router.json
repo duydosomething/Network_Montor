@@ -1,0 +1,1517 @@
+{
+    "name": "http://linksys.com/jnap/router/Router", 
+    "desc": "This service provides access to basic properties and settings of a router.", 
+    "actions": {
+        "ConnectPPPWAN": {
+            "name": "http://linksys.com/jnap/router/ConnectPPPWAN", 
+            "desc": "This action causes the router to connect to PPP.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidWANType": "The current WAN type is not PPPoE, PPTP, or L2TP.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "DisconnectPPPWAN": {
+            "name": "http://linksys.com/jnap/router/DisconnectPPPWAN", 
+            "desc": "This action causes the router to disconnect from PPP.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidWANType": "The current WAN type is not PPPoE, PPTP, or L2TP.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetDHCPClientLeases": {
+            "name": "http://linksys.com/jnap/router/GetDHCPClientLeases", 
+            "desc": "This action gets information for each of the DHCP server's DHCP leases.", 
+            "output": {
+                "leases": {
+                    "type": "DHCPLease", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The currently assigned DHCP leases from the DHCP server."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetEthernetPortConnections": {
+            "name": "http://linksys.com/jnap/router/GetEthernetPortConnections", 
+            "desc": "This action gets information about the router's Ethernet port connections.", 
+            "output": {
+                "wanPortConnection": {
+                    "type": "EthernetPortConnection", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The current state of the WAN Ethernet port."
+                }, 
+                "lanPortConnections": {
+                    "type": "EthernetPortConnection", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The current state of the LAN Ethernet ports."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetIPv6Settings": {
+            "name": "http://linksys.com/jnap/router/GetIPv6Settings", 
+            "desc": "This action gets router settings related to IPv6.", 
+            "output": {
+                "isIPv6AutomaticEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the router current uses IPv6 for all Internet connections."
+                }, 
+                "ipv6rdTunnelMode": {
+                    "type": "IPv6rdTunnelMode", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The router's current 6rd tunnel mode. This value will not be present if the value of the isIPv6AutomaticEnabled parameter is true."
+                }, 
+                "ipv6rdTunnelSettings": {
+                    "type": "IPv6rdTunnelSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The router's 6rd tunnel settings. This value will not be present unless the value of the isIPv6AutomaticEnabled parameter is false and the value of the ipv6rdTunnelMode parameter is Manual."
+                }, 
+                "duid": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The DUID used by the router for its DHCPv6 transactions."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetLANSettings": {
+            "name": "http://linksys.com/jnap/router/GetLANSettings", 
+            "desc": "This action gets router settings related to LAN management.", 
+            "output": {
+                "ipAddress": {
+                    "type": "IPAddress", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The IP address of the router on the LAN. If isDHCPEnabled is true, this is also the DHCP server's IP address."
+                }, 
+                "networkPrefixLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The network prefix length of the LAN."
+                }, 
+                "minNetworkPrefixLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The minimum supported network prefix length of the LAN."
+                }, 
+                "maxNetworkPrefixLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum supported network prefix length of the LAN."
+                }, 
+                "hostName": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The desired host name of the router on the LAN."
+                }, 
+                "minAllowedDHCPLeaseMinutes": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The minimum allowed length, in minutes, of a DHCP lease."
+                }, 
+                "maxAllowedDHCPLeaseMinutes": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The maximum allowed length, in minutes, of a DHCP lease. If this value is not present, there is no upper limit on the DHCP lease time."
+                }, 
+                "maxDHCPReservationDescriptionLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum length, in bytes, of the description member of a DHCP reservation."
+                }, 
+                "isDHCPEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the router is currently acting as a DHCP server for other devices on the LAN."
+                }, 
+                "dhcpSettings": {
+                    "type": "DHCPSettings", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Configurable settings of the router's DHCP server."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetMACAddressCloneSettings": {
+            "name": "http://linksys.com/jnap/router/GetMACAddressCloneSettings", 
+            "desc": "This action gets router settings related to the WAN MAC address.", 
+            "output": {
+                "isMACAddressCloneEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the router is currently using a cloned MAC address for its WAN interface."
+                }, 
+                "macAddress": {
+                    "type": "MACAddress", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The MAC address of the router's interface to the WAN. This value will be present if and only if the value of the isMACAddressCloneEnabled parameter is true."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetRoutingSettings": {
+            "name": "http://linksys.com/jnap/router/GetRoutingSettings", 
+            "desc": "This action gets router settings related to routing.", 
+            "output": {
+                "isNATEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether NAT is enabled on the router."
+                }, 
+                "isDynamicRoutingEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether Routing Information Protocol (RIP) is enabled on the router. This value can be true if and only if the value of the isNATEnabled member is false."
+                }, 
+                "entries": {
+                    "type": "NamedStaticRouteEntry", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The static routing entries to other networks or network segments."
+                }, 
+                "maxStaticRouteEntries": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The maximum number of static routing entries."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetStaticRoutingTable": {
+            "name": "http://linksys.com/jnap/router/GetStaticRoutingTable", 
+            "desc": "This action gets the static routing table.", 
+            "output": {
+                "table": {
+                    "type": "StaticRouteEntry", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The static routing table."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetWANSettings": {
+            "name": "http://linksys.com/jnap/router/GetWANSettings", 
+            "desc": "This action gets router settings related to the WAN connection.", 
+            "output": {
+                "wanType": {
+                    "type": "WANType", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The router's current configured WAN type."
+                }, 
+                "pppoeSettings": {
+                    "type": "PPPoESettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The router's current PPPoE settings. This value will only be present if the value of the wanType parameter is PPPoE."
+                }, 
+                "tpSettings": {
+                    "type": "TPSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The router's current PPTP/L2TP settings. This value will only be present if the value of the wanType parameter is PPTP or L2TP."
+                }, 
+                "telstraSettings": {
+                    "type": "TelstraSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The router's current Telstra settings. This value will only be present if the value of the wanType parameter is Telstra."
+                }, 
+                "staticSettings": {
+                    "type": "StaticSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The router's current static settings. This value will only be present if the value of the wanType parameter is Static."
+                }, 
+                "bridgeSettings": {
+                    "type": "BridgeSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The router's current bridge-mode settings. This value will only be present if the value of the wanType parameter is Bridge."
+                }, 
+                "dsliteSettings": {
+                    "type": "DSLiteSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The router's current DS-Lite settings. This value will only be present if the value of the wanType parameter is DSLite."
+                }, 
+                "domainName": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The current domain name of the router on the WAN, if any. The domain name is sometimes used by ISPs to provide reverse-lookup on the WAN IP address of the router. This value will be assigned by the upstream router unless specified in the staticSettings."
+                }, 
+                "mtu": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The current maximum packet size (maximum transmission unit), in octets, of the WAN connection. If this value is 0, the MTU is determined automatically by the router. If the value of the wanType parameter is Bridge, this value will be 0."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetWANStatus": {
+            "name": "http://linksys.com/jnap/router/GetWANStatus", 
+            "desc": "This action gets the current status of the router's WAN connection.", 
+            "output": {
+                "supportedWANTypes": {
+                    "type": "WANType", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The list of WAN types supported by the router."
+                }, 
+                "isDetectingWANType": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the router is currently attempting to determine the WAN type that it is connected to."
+                }, 
+                "detectedWANType": {
+                    "type": "WANType", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The WAN type that the router believes it is currently connected to. This value can be present only if the value of the isDetectingWANType member is false."
+                }, 
+                "wanStatus": {
+                    "type": "WANStatus", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The router's current WAN connection status."
+                }, 
+                "wanConnection": {
+                    "type": "WANConnectionInfo", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "Information about the router's current WAN connection. If the value of the wanStatus parameter is not Connected, this value will not be present."
+                }, 
+                "state": {
+                    "type": "PPPConnectionState", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The PPP connection establishment state. This value must be present if and only if the value of the detectedWANType member is PPPoE."
+                }, 
+                "wanIPv6Status": {
+                    "type": "WANStatus", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The router's current WAN IPv6 connection status."
+                }, 
+                "linkLocalIPv6Address": {
+                    "type": "IPv6Address", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The router's current WAN IPv6 link-local IPv6 address. This value will not be present if IPv6 is not enabled or supported on the WAN interface."
+                }, 
+                "wanIPv6Connection": {
+                    "type": "WANIPv6ConnectionInfo", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "Information about the router's current WAN IPv6 connection. If the value of the wanIPv6Status parameter is not Connected, this value will not be present."
+                }, 
+                "macAddress": {
+                    "type": "MACAddress", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The MAC address on the WAN interface."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "Reconnect6rdTunnel": {
+            "name": "http://linksys.com/jnap/router/Reconnect6rdTunnel", 
+            "desc": "This action causes the router to begin reconnecting the 6rd tunnel.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidIPv6WANType": "The current WAN IPv6 connection type is not 6rd tunnel.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "ReleaseDHCPIPv6WANLease": {
+            "name": "http://linksys.com/jnap/router/ReleaseDHCPIPv6WANLease", 
+            "desc": "This action causes the router to release its DHCP IPv6 lease.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidIPv6WANType": "The current WAN IPv6 connection type is not automatic.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "ReleaseDHCPWANLease": {
+            "name": "http://linksys.com/jnap/router/ReleaseDHCPWANLease", 
+            "desc": "This action causes the router to release its DHCP lease.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidWANType": "The current WAN type is not DHCP.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "RenewDHCPIPv6WANLease": {
+            "name": "http://linksys.com/jnap/router/RenewDHCPIPv6WANLease", 
+            "desc": "This action causes the router to begin renewing its DHCP IPv6 lease. If a DHCP IPv6 lease already exists, it will be released first.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidIPv6WANType": "The current WAN IPv6 connection type is not automatic.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "RenewDHCPWANLease": {
+            "name": "http://linksys.com/jnap/router/RenewDHCPWANLease", 
+            "desc": "This action causes the router to begin renewing its DHCP lease. If a DHCP lease already exists, it will be released first.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidWANType": "The current WAN type is not DHCP.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetIPv6Settings": {
+            "name": "http://linksys.com/jnap/router/SetIPv6Settings", 
+            "desc": "This action sets router settings related to IPv6.", 
+            "input": {
+                "isIPv6AutomaticEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the router should use IPv6 for all Internet connections."
+                }, 
+                "ipv6rdTunnelMode": {
+                    "type": "IPv6rdTunnelMode", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The desired 6rd tunnel mode for the router. This value must be specified if and only if the value of the isIPv6AutomaticEnabled parameter is false."
+                }, 
+                "ipv6rdTunnelSettings": {
+                    "type": "IPv6rdTunnelSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The desired 6rd tunnel settings for the router. This value must be present if and only if the value of the isIPv6AutomaticEnabled parameter is false and the value of the ipv6rdTunnelMode parameter is Manual."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidBorderRelay": "The specified 6rd tunnel border relay was 0.0.0.0.", 
+                    "ErrorInvalidBorderRelayPrefixLength": "The specified 6rd tunnel border relay prefix length was invalid.", 
+                    "ErrorInvalidPrefix": "The specified 6rd tunnel prefix was invalid.", 
+                    "ErrorInvalidPrefixLength": "The specified 6rd tunnel prefix length was invalid.", 
+                    "ErrorMissingIPv6rdTunnelMode": "IPv6 automatic was specified as disabled, but no 6rd tunnel mode was specified.", 
+                    "ErrorMissingIPv6rdTunnelSettings": "The 6rd tunnel mode was specified as Manual, but no tunnel settings were specified.", 
+                    "ErrorSuperfluousIPv6rdTunnelMode": "A 6rd tunnel mode was specified, even though IPv6 automatic was specified as enabled.", 
+                    "ErrorSuperfluousIPv6rdTunnelSettings": "6rd tunnel settings were specified, even though 6rd tunnel mode was not specified as Manual.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        },
+        "SetIPv6Settings2": {
+            "name": "http://linksys.com/jnap/router/SetIPv6Settings2", 
+            "desc": "This action sets router settings related to IPv6. Now uses WANIPv6Type2 and IPv6AutomaticSettings", 
+            "input": {
+                "wanType": {
+                    "type": "WANIPv6Type2",
+                    "array": false,
+                    "optional": false,
+                    "desc": "The desired type of the router's IPv6 WAN connection."
+                },
+                "ipv6AutomaticSettings": {
+                    "type": "ipv6AutomaticSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "Whether the router should use IPv6 for all Internet connections."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidBorderRelay": "The specified 6rd tunnel border relay was 0.0.0.0.", 
+                    "ErrorInvalidBorderRelayPrefixLength": "The specified 6rd tunnel border relay prefix length was invalid.", 
+                    "ErrorInvalidPrefix": "The specified 6rd tunnel prefix was invalid.", 
+                    "ErrorInvalidPrefixLength": "The specified 6rd tunnel prefix length was invalid.", 
+                    "ErrorMissingIPv6AutomaticSettings":"The IPv6 WAN type was specified as Automatic, but not ipv6AutomaticSettings settings were specified",
+                    "ErrorMissingIPv6rdTunnelMode": "IPv6 automatic was specified as disabled, but no 6rd tunnel mode was specified.", 
+                    "ErrorMissingIPv6rdTunnelSettings": "The 6rd tunnel mode was specified as Manual, but no tunnel settings were specified.", 
+                    "ErrorSuperfluousIPv6AutomaticSettings": "ipv6AutomaticSettings were specified, even though IPv6 WAN type was not specified as Automatic",
+                    "ErrorSuperfluousIPv6rdTunnelMode": "A 6rd tunnel mode was specified, even though IPv6 automatic was specified as enabled.", 
+                    "ErrorSuperfluousIPv6rdTunnelSettings": "6rd tunnel settings were specified, even though 6rd tunnel mode was not specified as Manual.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        },
+        
+        "SetLANSettings": {
+            "name": "http://linksys.com/jnap/router/SetLANSettings", 
+            "desc": "This action sets router settings related to LAN management.", 
+            "input": {
+                "ipAddress": {
+                    "type": "IPAddress", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The desired IP address of the router on the LAN.\n          \n          The following restrictions from RFC 5735 are applied to the router's LAN host address. The router's LAN host address must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.0\n              Subnetwork ID\n              RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.255\n              Subnetwork Broadcast Address\n              RFC 922, Section 7\n            \n          Additionally it must not conflict with the guest LAN subnetwork as returned by http://linksys.com/jnap/guestnetwork/GetGuestNetworkSettings2."
+                }, 
+                "networkPrefixLength": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The desired network prefix length of the LAN. This value must be between the minNetworkPrefixLength and maxNetworkPrefixLength values returned by GetLANSettings."
+                }, 
+                "hostName": {
+                    "type": "string", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The desired host name of the router on the LAN. This value must be between 1 and 15 characters and otherwise follow the format restrictions defined in RFC 952."
+                }, 
+                "isDHCPEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the router is currently acting as a DHCP server for other devices on the LAN."
+                }, 
+                "dhcpSettings": {
+                    "type": "DHCPSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "Configurable settings of the router's DHCP server. This value may be omitted if isDHCPEnabled is false."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidFirstClientIPAddress": "The specified first client IP address in the allowed range is not valid.", 
+                    "ErrorInvalidHostName": "The specified host name is not valid.", 
+                    "ErrorInvalidIPAddress": "The specified router IP address is not valid.", 
+                    "ErrorInvalidLastClientIPAddress": "The specified last client IP address in the allowed range is not valid.", 
+                    "ErrorInvalidLeaseMinutes": "The specified DHCP lease length is outside the allowed range.", 
+                    "ErrorInvalidNetworkPrefixLength": "The specified network prefix is invalid or is not supported by the router.", 
+                    "ErrorInvalidPrimaryDNSServer": "The specified primary DNS server IP addresses is not invalid.", 
+                    "ErrorInvalidReservationIPAddress": "The IP address of one of the specified DHCP reservations is not valid.", 
+                    "ErrorInvalidReservationMACAddress": "The MAC address of one of the specified DHCP reservations was 00:00:00:00:00:00.", 
+                    "ErrorInvalidSecondaryDNSServer": "The specified secondary DNS server IP addresses is not invalid.", 
+                    "ErrorInvalidTertiaryDNSServer": "The specified tertiary DNS server IP addresses is not invalid.", 
+                    "ErrorInvalidWINSServer": "The specified WINS server IP address is not invalid.", 
+                    "ErrorMissingDHCPSettings": "The DHCP server was specified as enabled, but no DHCP settings were specified.", 
+                    "ErrorReservationDescriptionInvalid": "The description value of one of the specified DHCP reservations was invalid.", 
+                    "ErrorReservationDescriptionTooLong": "The description of one of the specified DHCP reservations was longer than the maximum allowed length.", 
+                    "ErrorReservationsOverlap": "The specified list of DHCP reservations contained more than one reservation for a single IP or MAC address.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetMACAddressCloneSettings": {
+            "name": "http://linksys.com/jnap/router/SetMACAddressCloneSettings", 
+            "desc": "This action sets router settings related to the WAN MAC address.", 
+            "input": {
+                "isMACAddressCloneEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the router should use a cloned MAC address for its WAN interface."
+                }, 
+                "macAddress": {
+                    "type": "MACAddress", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The desired MAC address of the router's interface to the WAN. This value must be present if and only if the value of the isMACAddressCloneEnabled parameter is true. This value cannot be 0:0:0:0:0:0."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidMACAddress": "The specified MAC address was 0:0:0:0:0:0.", 
+                    "ErrorMissingMACAddress": "The value of the isMACAddressCloneEnabled parameter was true but a MAC address was not specified.", 
+                    "ErrorSuperfluousMACAddress": "The value of the isMACAddressCloneEnabled parameter was false but a MAC address was specified.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetRoutingSettings": {
+            "name": "http://linksys.com/jnap/router/SetRoutingSettings", 
+            "desc": "This action sets router settings related to routing.", 
+            "input": {
+                "isNATEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether NAT is enabled on the router."
+                }, 
+                "isDynamicRoutingEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether Routing Information Protocol (RIP) is enabled on the router. This value can be true if and only if the value of the isNATEnabled member is false."
+                }, 
+                "entries": {
+                    "type": "NamedStaticRouteEntry", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "The static routing entries to other networks or network segments."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorDuplicateEntryName": "More than one static route entry has the same name.", 
+                    "ErrorInvalidDynamicRoutingEnabled": "The value of the isNATEnabled parameter is true but isDynamicRoutingEnabled is true.", 
+                    "ErrorInvalidGateway": "A static route entry has an invalid gateway IP address or is not within the same subnetwork as the IP address.", 
+                    "ErrorInvalidIPAddress": "A static route entry has an invalid IP address.", 
+                    "ErrorInvalidNetworkPrefixLength": "A static route entry has an invalid network prefix length.", 
+                    "ErrorTooManyEntries": "The specified list of entries contains more than the maximum allowed number of entries.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetWANSettings": {
+            "name": "http://linksys.com/jnap/router/SetWANSettings", 
+            "desc": "This action sets router settings related to the WAN connection.", 
+            "input": {
+                "wanType": {
+                    "type": "WANType", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The desired type of the router's WAN connection."
+                }, 
+                "pppoeSettings": {
+                    "type": "PPPoESettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The desired PPPoE settings for the router. If the value of the wanType parameter is not PPPoE, this value is ignored if present."
+                }, 
+                "tpSettings": {
+                    "type": "TPSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The desired PPTP/L2TP settings for the router. If the value of the wanType parameter is not PPTP or L2TP, this value is ignored if present."
+                }, 
+                "telstraSettings": {
+                    "type": "TelstraSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The desired Telstra settings for the router. If the value of the wanType parameter is not Telstra, this value is ignored if present."
+                }, 
+                "staticSettings": {
+                    "type": "StaticSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The desired static settings for the router. If the value of the wanType parameter is not Static, this value is ignored if present."
+                }, 
+                "bridgeSettings": {
+                    "type": "BridgeSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The desired bridge-mode settings for the router. If the value of the wanType parameter is not Bridge, this value is ignored if present."
+                }, 
+                "dsliteSettings": {
+                    "type": "DSLiteSettings", 
+                    "array": false, 
+                    "optional": true, 
+                    "desc": "The desired DS-Lite settings for the router. If the value of the wanType parameter is not DS-Lite, this value is ignored if present."
+                }, 
+                "mtu": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "The desired maximum packet size (maximum transmission unit), in octets, of the WAN connection. If this value is 0, the router will determine the MTU of the WAN connection automatically. Otherwise, the allowed values depend on the specified WAN type:\n          WAN type\n              Allowed MTU values\n            DHCP\n              0, 576-1500\n            PPPoE\n              0, 576-1492\n            PPTP\n              0, 576-1460\n            L2TP\n              0, 576-1460\n            Telstra\n              0\n            DSLite\n              0\n            Static\n              0, 576-1500\n            Bridge\n              0"
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidDomainName": "The specified domain name of the static settings is not valid.", 
+                    "ErrorInvalidGateway": "The specified gateway IP address is not valid, is not within the same subnetwork as the IP address, or is equal to the IP address.", 
+                    "ErrorInvalidIPAddress": "The specified IP address is not valid.", 
+                    "ErrorInvalidMTU": "The specified MTU is not valid.", 
+                    "ErrorInvalidMaxIdleMinutes": "The specified max idle time is invalid.", 
+                    "ErrorInvalidNetworkPrefixLength": "The specified network prefix length is not valid.", 
+                    "ErrorInvalidPassword": "The PPP password is not valid.", 
+                    "ErrorInvalidPrimaryDNSServer": "The specified primary DNS server IP addresses is not invalid.", 
+                    "ErrorInvalidReconnectAfterSeconds": "The specified reconnect time is invalid.", 
+                    "ErrorInvalidSecondaryDNSServer": "The specified secondary DNS server IP addresses is not invalid.", 
+                    "ErrorInvalidServer": "The specified server IP address is not valid.", 
+                    "ErrorInvalidServiceName": "The PPPoE service name is not valid.", 
+                    "ErrorInvalidTertiaryDNSServer": "The specified tertiary DNS server IP addresses is not invalid.", 
+                    "ErrorInvalidUsername": "The PPP username is not valid.", 
+                    "ErrorMissingBridgeSettings": "The WAN type was specified as Bridge, but no bridge settings were specified.", 
+                    "ErrorMissingPPPoESettings": "The WAN type was specified as PPPoE, but no PPPoE settings were specified.", 
+                    "ErrorMissingStaticSettings": "The WAN type was specified as Static, but no static settings were specified.", 
+                    "ErrorMissingTPSettings": "The WAN type was specified as PPTP or L2TP, but no TP settings were specified.", 
+                    "ErrorMissingTelstraSettings": "The WAN type was specified as Telstra, but no Telstra settings were specified.", 
+                    "ErrorSuperfluousBridgeSettings": "Bridge settings were specified even though the specified WAN type was not Bridge.", 
+                    "ErrorSuperfluousPPPoESettings": "PPPoE settings were specified even though the specified WAN type was not PPPoE.", 
+                    "ErrorSuperfluousStaticSettings": "Static settings were specified even though the specified WAN type was not Static.", 
+                    "ErrorSuperfluousTPSettings": "TP settings were specified even though the specified WAN type was not PPTP or L2TP.", 
+                    "ErrorSuperfluousTelstraSettings": "Telstra settings were specified even though the specified WAN type was not Telstra.", 
+                    "ErrorUnsupportedWANType": "The specified WAN type is not supported by the router.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }, 
+    "structs": {
+        "DHCPSettings": {
+            "leaseMinutes": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The number of minutes for which a new lease issued by the DHCP server should be valid. This value must be between the minAllowedLeaseMinutes and maxAllowedLeaseMinutes members of the DHCPSettings action."
+            }, 
+            "firstClientIPAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The first client IP address in the range of addresses that should be allocated by the DHCP server. This value must be in the same subnet as the router's LAN host address (as defined by SetLANSettings) and not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            192.168.1.0/24: 192.168.1.255\n              Subnetwork Broadcast Address\n              RFC 922, Section 7\n            \n          This range of DHCP-assignable client IP addresses may included the router's LAN IP address, though it will never be assigned to a client."
+            }, 
+            "lastClientIPAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The last client IP address in the range of addresses that should be allocated by the DHCP server. This value must be greater than or equal to the firstClientIPAddress value and not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            192.168.1.0/24: 192.168.1.255\n              Subnetwork Broadcast Address\n              RFC 922, Section 7"
+            }, 
+            "dnsServer1": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The desired IP address of the primary DNS server, if any.\n          \n          The following restrictions from RFC 5735 are applied to the primary DNS server address. The primary DNS server must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7"
+            }, 
+            "dnsServer2": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The desired IP address of the secondary DNS server, if any.\n          \n          The following restrictions from RFC 5735 are applied to the secondary DNS server address. The secondary DNS server must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7"
+            }, 
+            "dnsServer3": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The desired IP address of the tertiary DNS server, if any.\n          \n          The following restrictions from RFC 5735 are applied to the tertiary DNS server address. The tertiary DNS server must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7"
+            }, 
+            "winsServer": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The desired IP address of the WINS server, if any.\n          \n          The following restrictions from RFC 5735 are applied to the WINS server address. The WINS server must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7"
+            }, 
+            "reservations": {
+                "type": "DHCPReservation", 
+                "array": true, 
+                "optional": false, 
+                "desc": "The desired list of DHCP reservations."
+            }
+
+        }, 
+        "WANConnectionInfo": {
+            "wanType": {
+                "type": "WANType", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The type of the WAN connection."
+            }, 
+            "ipAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the router on the WAN."
+            }, 
+            "networkPrefixLength": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The WAN network prefix length."
+            }, 
+            "gateway": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the WAN gateway."
+            }, 
+            "mtu": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The maximum packet size (maximum transmission unit), in octets, of the WAN connection."
+            }, 
+            "dhcpLeaseMinutes": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The number of minutes in the DHCP lease. If the value of the wanType parameter is not DHCP, this value will not be present."
+            }, 
+            "dnsServer1": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the primary DNS server."
+            }, 
+            "dnsServer2": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The IP address of the secondary DNS server, if any."
+            }, 
+            "dnsServer3": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The IP address of the tertiary DNS server, if any."
+            }
+        }, 
+        "WANIPv6ConnectionInfo": {
+            "wanType": {
+                "type": "WANIPv6Type", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The type of the WAN connection."
+            }, 
+            "networkInfo": {
+                "type": "IPv6NetworkInfo", 
+                "array": false, 
+                "optional": true, 
+                "desc": "IPv6 network info. This is set if and only if the type is not 6rd Tunnel."
+            }
+        }, 
+        "PPPoESettings": {
+            "username": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The username to be used for the connection. This value must be between 0 and 255 characters."
+            }, 
+            "password": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The password to be used for the connection. This value must be between 0 and 255 characters."
+            }, 
+            "serviceName": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The service name to be used for the connection. This value may be an empty string for some service providers. This value must be between 0 and 255 characters."
+            }, 
+            "behavior": {
+                "type": "PPPConnectionBehavior", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The connection behavior."
+            }, 
+            "maxIdleMinutes": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The maximum number of minutes that the connection can be idle before it is automatically disconnected. This value is required if the value of the behavior member is ConnectOnDemand. This value must be between 1 and 9999."
+            }, 
+            "reconnectAfterSeconds": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The number of seconds to wait before automatically reconnecting after the connection is disconnected. This value is required if the value of the behavior member is KeepAlive. This value must be between 20 and 180."
+            }
+        }, 
+        "IPv6NetworkInfo": {
+            "ipAddress": {
+                "type": "IPv6Address", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the router on the WAN."
+            }, 
+            "gateway": {
+                "type": "IPv6Address", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The IP address of the WAN gateway."
+            }, 
+            "dhcpLeaseMinutes": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The number of minutes in the DHCP lease. If the value of the wanType parameter is not DHCPv6, this value will not be present."
+            }, 
+            "dnsServer1": {
+                "type": "IPv6Address", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The IP address of the primary DNS server."
+            }, 
+            "dnsServer2": {
+                "type": "IPv6Address", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The IP address of the secondary DNS server, if any."
+            }, 
+            "dnsServer3": {
+                "type": "IPv6Address", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The IP address of the tertiary DNS server, if any."
+            }
+        }, 
+        "NamedStaticRouteEntry": {
+            "name": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The name of the entry."
+            }, 
+            "settings": {
+                "type": "StaticRouteEntry", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The location of the Destination LAN IP address."
+            }
+        }, 
+        "TelstraSettings": {
+            "server": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the Telstra server.\n          \n          The following restrictions from RFC 5735 are applied to the Telstra server address. The Telstra server address must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7"
+            }, 
+            "username": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The username to be used for the connection. This value must be between 0 and 255 characters."
+            }, 
+            "password": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The password to be used for the connection. This value must be between 0 and 255 characters."
+            }
+        }, 
+        "StaticRouteEntry": {
+            "interface": {
+                "type": "DestinationInterface", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The interface the route applies to."
+            }, 
+            "destinationLAN": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the remote network of the static route.\n          \n          The following restrictions from RFC 5735 are applied to the static route address. The static route address must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7"
+            }, 
+            "networkPrefixLength": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The network prefix length for the Destination LAN IP address. This value must be between 8 and 30."
+            }, 
+            "gateway": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The IP address of the gateway server that enables communication with the remote network. This value may be omitted if the interface member is set to WAN, in which case the default gateway of the WAN interface will be used.\n          \n          The following restrictions from RFC 5735 are applied to the static route gateway address. This value must be in the same subnet as the router's LAN host address (as defined by SetLANSettings) for static routes on the LAN interface and must not be in the same subnet as the router's LAN host address for static routes on the Internet interface. Additionally it must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.0\n              Subnetwork ID\n              RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.255\n              Subnetwork Broadcast Address\n              RFC 922, Section 7"
+            }
+        }, 
+        "DSLiteSettings": {
+            "useManualSettings": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the router's AFTR address is manually specified."
+            }, 
+            "manualSettings": {
+                "type": "AFTRSettings", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The manual settings used for the connection. This value must be present if and only if the value of the useManualSettings member is true."
+            }
+        }, 
+        "TPSettings": {
+            "useStaticSettings": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the router's WAN IP address and other settings are statically specified."
+            }, 
+            "staticSettings": {
+                "type": "StaticSettings", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The static settings used for the connection. This value must be present if and only if the value of the useStaticSettings member is true."
+            }, 
+            "server": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the L2TP server.\n          \n          The following restrictions from RFC 5735 are applied to the L2TP server address. The L2TP server address must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7"
+            }, 
+            "username": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The username to be used for the connection. This value must be between 0 and 255 characters."
+            }, 
+            "password": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The password to be used for the connection. This value must be between 0 and 255 characters."
+            }, 
+            "behavior": {
+                "type": "PPPConnectionBehavior", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The connection behavior."
+            }, 
+            "maxIdleMinutes": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The maximum number of minutes that the connection can be idle before it is automatically disconnected. This value is required if the value of the behavior member is ConnectOnDemand. This value must be between 1 and 9999."
+            }, 
+            "reconnectAfterSeconds": {
+                "type": "int", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The number of seconds to wait before automatically reconnecting after the connection is disconnected. This value is required if the value of the behavior member is KeepAlive. This value must be between 20 and 180."
+            }
+        }, 
+        "IPv6rdTunnelSettings": {
+            "prefix": {
+                "type": "IPv6Address", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IPv6 prefix, specified as an IPv6 address with all bits after the prefix set to 0."
+            }, 
+            "prefixLength": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IPv6 prefix length. This value must be between 0 and 64."
+            }, 
+            "borderRelay": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IPv4 address of the border relay."
+            }, 
+            "borderRelayPrefixLength": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IPv4 border relay network prefix length. This value must be between 0 and 32. The value (prefixLength - borderRelayPrefixLength) must be less than or equal to 32."
+            }
+        }, 
+        "DHCPReservation": {
+            "macAddress": {
+                "type": "MACAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The MAC address that the DHCP reservation is for."
+            }, 
+            "ipAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The client IP address that is reserved for the specified MAC address. This value must be in the same subnet as the router's LAN host address (as defined by SetLANSettings), but not equal to the router's LAN host address and not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            192.168.1.0/24: 192.168.1.0\n              Subnetwork ID\n              RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.255\n              Subnetwork Broadcast Address\n              RFC 922, Section 7"
+            }, 
+            "description": {
+                "type": "string", 
+                "array": false, 
+                "optional": false, 
+                "desc": "An optional host name the DHCP server will use to track the client instead of the client-supplied host name in the DHCP client table. Specifying the empty string will use the client-supplied host name for the DHCP table entry. Otherwise this value must be less than the maxDHCPReservationDescriptionLength member of GetLANSettings and follow the format restrictions defined in RFC 952."
+            }
+        }, 
+        "AFTRSettings": {
+            "aftrURL": {
+                "type": "string", 
+                "array": false, 
+                "optional": true, 
+                "desc": "ISP Server (AFTR) URL. Either aftrURL or aftrAddress will be set."
+            }, 
+            "aftrAddress": {
+                "type": "IPv6Address", 
+                "array": false, 
+                "optional": true, 
+                "desc": "ISP Server (AFTR) IPv6 address. Either aftrURL or aftrAddress will be set."
+            }
+        }, 
+        "StaticSettings": {
+            "ipAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The host IP address of the router on the WAN.\n          \n          The following restrictions from RFC 5735 are applied to the WAN host address. The WAN host address must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.0\n              Subnetwork ID\n              RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.255\n              Subnetwork Broadcast Address\n              RFC 922, Section 7"
+            }, 
+            "networkPrefixLength": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The WAN network prefix length. This value must be between 8 and 30."
+            }, 
+            "gateway": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the WAN gateway.\n          \n          The following restrictions from RFC 5735 are applied to the WAN gateway address. The WAN gateway address must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.0\n              Subnetwork ID\n              RFC 922, Section 7\n            192.168.1.0/24: 192.168.1.255\n              Subnetwork Broadcast Address\n              RFC 922, Section 7"
+            }, 
+            "dnsServer1": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The IP address of the primary DNS server.\n          \n          The following restrictions from RFC 5735 are applied to the primary DNS server address. The primary DNS server address must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7"
+            }, 
+            "dnsServer2": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The IP address of the secondary DNS server, if any.\n          \n          The following restrictions from RFC 5735 are applied to the secondary DNS server address. The secondary DNS server address must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7"
+            }, 
+            "dnsServer3": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The IP address of the tertiary DNS server, if any.\n          \n          The following restrictions from RFC 5735 are applied to the tertiary DNS server address. The tertiary DNS server address must not fall inside the following reserved ranges:\n          Address Block\n              Description\n              Reference\n            0.0.0.0/8\n              \"This\" Network\n              RFC 1122, Section 3.2.1.3\n            127.0.0.0/8\n              Loopback\n              RFC 1122, Section 3.2.1.3\n            169.254.0.0/16\n              Link Local\n              RFC 3927\n            224.0.0.0/4\n              Multicast\n              RFC 3171\n            240.0.0.0/4\n              Reserved for Future Use\n              RFC 1112, Section 4\n            255.255.255.255/32\n              Limited Broadcast\n              RFC 919, Section 7\u00a0 RFC 922, Section 7"
+            }, 
+            "domainName": {
+                "type": "string", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The desired domain name of the router on the WAN. This must be a valid host name as defined in RFC 952 and RFC 1123. Omitting this value will clear the currently configured domain name."
+            }
+        }, 
+        "BridgeSettings": {
+            "useStaticSettings": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Whether the router's WAN IP address and other settings are statically specified."
+            }, 
+            "staticSettings": {
+                "type": "StaticSettings", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The static settings used for the connection. This value must be present if and only if the value of the useStaticSettings member is true."
+            }
+        }, 
+        "DHCPLease": {
+            "macAddress": {
+                "type": "MACAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The client's MAC address."
+            }, 
+            "ipAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The DHCP-assigned IP address."
+            }, 
+            "expiration": {
+                "type": "DateTime", 
+                "array": false, 
+                "optional": false, 
+                "desc": "The expiration time of the DHCP lease."
+            }, 
+            "hostName": {
+                "type": "string", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The client's host name, if one was provided in the client's DHCP request."
+            }, 
+            "clientID": {
+                "type": "string", 
+                "array": false, 
+                "optional": true, 
+                "desc": "The DHCP client identifier, if one was provided in the client's DHCP request."
+            }
+        },
+        "ipv6AutomaticSettings": {
+            "isIPv6AutomaticEnabled": {
+                "type": "bool",
+                "array": false,
+                "optional": false,
+                "desc": "The router's automatic IPv6 settings. This exist only when wanType is set to Automatic"
+            }
+        }
+    }, 
+    "enums": {
+        "WANType": {
+            "DHCP": "A DHCP WAN connection.", 
+            "PPPoE": "A DHCP PPPoE WAN connection.", 
+            "PPTP": "A PPTP WAN connection.", 
+            "L2TP": "A L2TP WAN connection.", 
+            "Telstra": "A Telstra WAN connection.", 
+            "Static": "A static IP WAN connection.", 
+            "Bridge": "The router is in bridge mode.", 
+            "DSLite": "A DS-Lite WAN connection."
+        }, 
+        "PPPConnectionBehavior": {
+            "ConnectOnDemand": "Automatically disconnect after the connection has been idle for a specified amount of time.", 
+            "KeepAlive": "Automatically reconnect when the connection is disconnected."
+        }, 
+        "EthernetPortConnection": {
+            "None": "Nothing is plugged in to the port.", 
+            "10Mbps": "The port has a connection with a theoretical maximum throughput of 10 Mbps.", 
+            "100Mbps": "The port has a connection with a theoretical maximum throughput of 100 Mbps.", 
+            "1Gbps": "The port has a connection with a theoretical maximum throughput of 1 GBps."
+        }, 
+        "DestinationInterface": {
+            "LAN": "LAN.", 
+            "Internet": "Internet."
+        }, 
+        "IPv6rdTunnelMode": {
+            "Disabled": "The 6rd tunnel feature is disabled.", 
+            "Automatic": "The 6rd tunnel feature is enabled determines the tunnel settings automatically.", 
+            "Manual": "The 6rd tunnel feature is enabled and uses user-specified tunnel settings."
+        }, 
+        "WANStatus": {
+            "Indeterminate": "The router cannot determine the status of its WAN connection.", 
+            "Disconnected": "The router's WAN port is not connected at layer 2, and the router is not in the process of negotiating connectivity.", 
+            "LimitedConnection": "The router's WAN port is connected at layer 2, but the router cannot send or receive IP packets and is not in the process of negotiating IP connectivity.", 
+            "Connecting": "The router's WAN port is in the process of negotiating IP connectivity (for example, using DHCP).", 
+            "Connected": "The router can send and receive IP packets on the WAN."
+        }, 
+        "WANIPv6Type": {
+            "Static": "Static", 
+            "Bridge": "Bridge", 
+            "6rd Tunnel": "6rd Tunnel", 
+            "SLAAC": "State less address auto configuration.", 
+            "DHCPv6": "DHCPv6"
+        }, 
+        "WANIPv6Type2":
+        {
+            "Automatic":"Automatic",
+            "Static":"Static",
+            "Bridge":"Bridge",
+            "6rd Tunnel": "6rd Tunnel", 
+            "SLAAC": "State less address auto configuration.", 
+            "DHCPv6": "DHCPv6",
+            "PPPoE":"PPPoE",
+            "Pass-through":"Pass-through"
+        },
+        "PPPConnectionState": {
+            "Connecting": "The router has not finished communicating with the upstream device.", 
+            "AuthenticationFailure": "The router failed to authenticate with the upstream device.", 
+            "Connected": "The router is connected to the upstream device."
+        }
+    }
+}

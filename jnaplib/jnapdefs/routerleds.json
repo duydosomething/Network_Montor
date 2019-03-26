@@ -1,0 +1,64 @@
+{
+    "name": "http://linksys.com/jnap/routerleds/RouterLEDs", 
+    "desc": "This service provides access to a router's LED settings.", 
+    "actions": {
+        "GetRouterLEDSettings": {
+            "name": "http://linksys.com/jnap/routerleds/GetRouterLEDSettings", 
+            "desc": "This service provides access to a router's LED settings. This action gets the router's LED settings.", 
+            "output": {
+                "isSwitchportLEDEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the router's switchport LED is currently enabled."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetRouterLEDSettings": {
+            "name": "http://linksys.com/jnap/routerleds/SetRouterLEDSettings", 
+            "desc": "This action sets the router's LED settings.", 
+            "input": {
+                "isSwitchportLEDEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether the router's switchport LED should be enabled."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }
+}

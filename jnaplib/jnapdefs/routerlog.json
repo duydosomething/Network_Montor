@@ -1,0 +1,371 @@
+{
+    "name": "http://linksys.com/jnap/routerlog/RouterLog", 
+    "desc": "This service provides access to a router's log settings.", 
+    "actions": {
+        "DeleteLogEntries": {
+            "name": "http://linksys.com/jnap/routerlog/DeleteLogEntries", 
+            "desc": "This action deletes all log entries on the router.", 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorDisallowedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetDHCPLogEntries": {
+            "name": "http://linksys.com/jnap/routerlog/GetDHCPLogEntries", 
+            "desc": "This action gets the oldest DHCP client log entries for the router.", 
+            "input": {
+                "firstEntryIndex": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Index of first entry to return. Indices begin with 1."
+                }, 
+                "entryCount": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Maximum number of entries to return."
+                }
+            }, 
+            "output": {
+                "entries": {
+                    "type": "DHCPClientEntry", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "Log entries for DHCP client."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidEntryCount": "The specified entry count was less than 1.", 
+                    "ErrorInvalidFirstEntryIndex": "The specified first entry index was less than 1.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetIncomingLogEntries": {
+            "name": "http://linksys.com/jnap/routerlog/GetIncomingLogEntries", 
+            "desc": "This action gets the oldest incoming traffic log entries for the router.", 
+            "input": {
+                "firstEntryIndex": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Index of first entry to return. Indices begin with 1."
+                }, 
+                "entryCount": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Maximum number of entries to return."
+                }
+            }, 
+            "output": {
+                "entries": {
+                    "type": "IncomingTrafficEntry", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "Log entries for incoming traffic."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidEntryCount": "The specified entry count was less than 1.", 
+                    "ErrorInvalidFirstEntryIndex": "The specified first entry index was less than 1.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetLogSettings": {
+            "name": "http://linksys.com/jnap/routerlog/GetLogSettings", 
+            "desc": "This action gets the router's logging settings.", 
+            "output": {
+                "isLoggingEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether logging is enabled."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetOutgoingLogEntries": {
+            "name": "http://linksys.com/jnap/routerlog/GetOutgoingLogEntries", 
+            "desc": "This action gets the oldest outgoing traffic log entries for the router.", 
+            "input": {
+                "firstEntryIndex": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Index of first entry to return. Indices begin with 1."
+                }, 
+                "entryCount": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Maximum number of entries to return."
+                }
+            }, 
+            "output": {
+                "entries": {
+                    "type": "OutgoingTrafficEntry", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "Log entries for outgoing traffic."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidEntryCount": "The specified entry count was less than 1.", 
+                    "ErrorInvalidFirstEntryIndex": "The specified first entry index was less than 1.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "GetSecurityLogEntries": {
+            "name": "http://linksys.com/jnap/routerlog/GetSecurityLogEntries", 
+            "desc": "This action gets the oldest security log entries for the router.", 
+            "input": {
+                "firstEntryIndex": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Index of first entry to return. Indices begin with 1."
+                }, 
+                "entryCount": {
+                    "type": "int", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Maximum number of entries to return."
+                }
+            }, 
+            "output": {
+                "entries": {
+                    "type": "SecurityEntry", 
+                    "array": true, 
+                    "optional": false, 
+                    "desc": "Log entries for security."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "ErrorInvalidEntryCount": "The specified entry count was less than 1.", 
+                    "ErrorInvalidFirstEntryIndex": "The specified first entry index was less than 1.", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }, 
+        "SetLogSettings": {
+            "name": "http://linksys.com/jnap/routerlog/SetLogSettings", 
+            "desc": "This action sets the router's logging settings.", 
+            "input": {
+                "isLoggingEnabled": {
+                    "type": "bool", 
+                    "array": false, 
+                    "optional": false, 
+                    "desc": "Whether logging is enabled."
+                }
+            }, 
+            "result": {
+                "errors": {
+                    "Error": "", 
+                    "_ErrorAbortedAction": "", 
+                    "_ErrorInvalidInput": "", 
+                    "_ErrorInvalidOutput": "", 
+                    "_ErrorNotReady": "", 
+                    "_ErrorSessionVerification": "", 
+                    "_ErrorUnauthorized": "", 
+                    "_ErrorUnexpected": "", 
+                    "_ErrorUnknownAction": "", 
+                    "_ErrorUnknownSession": ""
+                }, 
+                "success": {
+                    "OK": "Success."
+                }
+            }
+        }
+    }, 
+    "structs": {
+        "DHCPClientEntry": {
+            "timestamp": {
+                "type": "DateTime", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Timestamp."
+            }, 
+            "messageType": {
+                "type": "DHCPMessageType", 
+                "array": false, 
+                "optional": false, 
+                "desc": "DHCP message type."
+            }, 
+            "macAddress": {
+                "type": "MACAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "MAC address."
+            }, 
+            "ipAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": true, 
+                "desc": "IP address."
+            }
+        }, 
+        "OutgoingTrafficEntry": {
+            "source": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Source IP address."
+            }, 
+            "destination": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Destination IP address."
+            }, 
+            "destinationPort": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Destination port number."
+            }, 
+            "service": {
+                "type": "string", 
+                "array": false, 
+                "optional": true, 
+                "desc": "Destination service."
+            }
+        }, 
+        "SecurityEntry": {
+            "timestamp": {
+                "type": "DateTime", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Timestamp."
+            }, 
+            "ipAddress": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "IP address."
+            }, 
+            "macAddress": {
+                "type": "MACAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "MAC address."
+            }, 
+            "authSucceeded": {
+                "type": "bool", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Authentication succeeded."
+            }
+        }, 
+        "IncomingTrafficEntry": {
+            "source": {
+                "type": "IPAddress", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Source IP address."
+            }, 
+            "destinationPort": {
+                "type": "int", 
+                "array": false, 
+                "optional": false, 
+                "desc": "Destination port number."
+            }
+        }
+    }, 
+    "enums": {
+        "DHCPMessageType": {
+            "Discover": "DHCP discover.", 
+            "Offer": "DHCP offer.", 
+            "Ack": "DHCP ack.", 
+            "Nak": "DHCP nak.", 
+            "Decline": "DHCP decline.", 
+            "Release": "DHCP release.", 
+            "Inform": "DHCP inform."
+        }
+    }
+}
