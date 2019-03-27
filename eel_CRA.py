@@ -51,10 +51,7 @@ def start_eel(develop):
 
     eel.init(directory, ['.jsx', '.js', '.html'])
 
-    # These will be queued until the first connection is made, but won't be repeated on a page reload
-    say_hello_py('Python World!')
-    eel.say_hello_js('Python World!')   # Call a JavaScript function (must be after `eel.init()`)
-
+    print "Starting server..."
     eel.start(page, size=(1280, 800), options={
         'mode': app,
         'port': 8080,
