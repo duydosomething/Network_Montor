@@ -4,9 +4,20 @@ sys.path.insert(1, '../../')
 
 import os
 import random
-
+import jnaplib
 import eel
 
+@eel.expose
+def getDeviceInfo():
+    jnap = jnaplib.JnapClient()
+    jnap.configure(url="http://192.168.20.1/JNAP", username="admin", password="admin")
+    deviceInfo = {}
+    allOutput = jnap.call("GetDeviceInfo")["output"]
+    deviceInfo["firmwareVersion"] = allOutput["firmwareVersion"]
+    deviceInfo["modelNumber"] = allOutput["modelNumber"]
+    deviceInfo["hardwareVersion"] = allOutput["hardwareVersion"]
+    deviceInfo["serialNumber"] = allOutput["serialNumber"]
+    return deviceInfo
 
 @eel.expose                         # Expose this function to JavaScript
 def say_hello_py(x):
