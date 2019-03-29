@@ -6,7 +6,13 @@ import os
 import random
 import jnaplib
 import eel
+import nmap
+import ipaddress
+import socket
 
+nm = nmap.PortScanner()
+netmask = '/24'
+cidr = ''
 @eel.expose
 def getDeviceInfo():
     jnap = jnaplib.JnapClient()
@@ -19,22 +25,36 @@ def getDeviceInfo():
     deviceInfo["serialNumber"] = allOutput["serialNumber"]
     return deviceInfo
 
-@eel.expose                         # Expose this function to JavaScript
-def say_hello_py(x):
-    # Print to Python console
-    print('Hello from %s' % x)
-    # Call a JavaScript function
-    eel.say_hello_js('Python {from within say_hello_py()}!')
+# @eel.expose                         # Expose this function to JavaScript
+# def say_hello_py(x):
+#     # Print to Python console
+#     print('Hello from %s' % x)
+#     # Call a JavaScript function
+#     eel.say_hello_js('Python {from within say_hello_py()}!')
 
+
+# @eel.expose
+# def pick_file(folder):
+#     folder = os.path.expanduser(folder)
+#     if os.path.isdir(folder):
+#         return random.choice(os.listdir(folder))
+#     else:
+#         return '{} is not a valid folder'.format(folder)
+
+def get_cidr():
+    curr_ip = get_ip_address()
+    return str(ipaddress.ip_network(unicode(curr_ip+netmask, 'utf-8'), strict=False))
+
+def get_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
 
 @eel.expose
-def pick_file(folder):
-    folder = os.path.expanduser(folder)
-    if os.path.isdir(folder):
-        return random.choice(os.listdir(folder))
-    else:
-        return '{} is not a valid folder'.format(folder)
-
+def get_scan_results():
+    nm.scan(hosts=get_cidr(), arguments='-sn')
+    print nm._scan_result['scan']
+    return nm._scan_result['scan']
 
 def start_eel(develop):
     """Start Eel with either production or development configuration"""

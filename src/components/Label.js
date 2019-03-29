@@ -4,7 +4,7 @@ class Label extends React.Component {
   render() {
     return (
       <div className='ui labeled input' id={this.props.id}>
-        <div class='ui label'>{this.props.label}</div>
+        <div className='ui label'>{this.props.label}</div>
         <input
           type='text'
           value={this.props.value}
