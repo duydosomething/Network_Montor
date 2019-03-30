@@ -10,6 +10,13 @@ class Devices extends React.Component {
   }
   getDevices = async () => {
     let n = await eel.get_scan_results()();
+    for (let [key, value] of Object.entries(n)) {
+      if (value["addresses"]["mac"]) {
+        this.setState({ [key]: value["addresses"]["mac"] });
+      } else {
+        this.setState({ [key]: "SELF" });
+      }
+    }
     this.setState({ devices: JSON.stringify(n) });
     console.log(n);
   };
@@ -19,7 +26,15 @@ class Devices extends React.Component {
         <button className='ui button' onClick={this.getDevices}>
           Get Devices
         </button>
-        {this.state.devices}
+        <div className='ui middle aligned list'>
+          {Object.keys(this.state).map(key => {
+            return (
+              <div className='item'>
+                {key}: {this.state[key]}
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
