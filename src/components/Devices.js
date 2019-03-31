@@ -1,4 +1,5 @@
 import React from "react";
+import DeviceItem from "./DeviceItem";
 
 export const eel = window.eel;
 eel.set_host("ws://localhost:8080");
@@ -29,9 +30,10 @@ class Devices extends React.Component {
         <div className='ui middle aligned list'>
           {Object.keys(this.state).map(key => {
             return (
-              <div className='item'>
-                {key}: {this.state[key]}
-              </div>
+              // <div className='item'>
+              //   {key}: {this.state[key]}
+              // </div>
+              <DeviceItem device={key} />
             );
           })}
         </div>
