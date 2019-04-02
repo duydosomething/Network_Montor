@@ -9,14 +9,16 @@ import eel
 import nmap
 import ipaddress
 import socket
+import netifaces
 
 nm = nmap.PortScanner()
 netmask = '/24'
 cidr = ''
 @eel.expose
 def getDeviceInfo():
+    default_gateway = get_ip_address()[0]
     jnap = jnaplib.JnapClient()
-    jnap.configure(url="http://192.168.20.1/JNAP", username="admin", password="admin")
+    jnap.configure(url="http://%s/JNAP" % default_gateway, username="admin", password="admin")
     deviceInfo = {}
     allOutput = jnap.call("GetDeviceInfo")["output"]
     deviceInfo["firmwareVersion"] = allOutput["firmwareVersion"]
@@ -42,13 +44,16 @@ def getDeviceInfo():
 #         return '{} is not a valid folder'.format(folder)
 
 def get_cidr():
-    curr_ip = get_ip_address()
+    curr_ip = get_ip_address()[1]
     return str(ipaddress.ip_network(unicode(curr_ip+netmask, 'utf-8'), strict=False))
 
 def get_ip_address():
+    gateways = netifaces.gateways()
+    default_gateway = gateways['default'][netifaces.AF_INET][0]
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
-    return s.getsockname()[0]
+    host_ip = s.getsockname()[0]
+    return default_gateway, host_ip
 
 @eel.expose
 def get_scan_results():
