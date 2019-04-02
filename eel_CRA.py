@@ -16,7 +16,7 @@ cidr = ''
 @eel.expose
 def getDeviceInfo():
     jnap = jnaplib.JnapClient()
-    jnap.configure(url="http://192.168.1.1/JNAP", username="admin", password="admin")
+    jnap.configure(url="http://192.168.20.1/JNAP", username="admin", password="admin")
     deviceInfo = {}
     allOutput = jnap.call("GetDeviceInfo")["output"]
     deviceInfo["firmwareVersion"] = allOutput["firmwareVersion"]

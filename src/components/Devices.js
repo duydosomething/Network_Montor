@@ -27,7 +27,7 @@ class Devices extends React.Component {
         <button className='ui button' onClick={this.getDevices}>
           Get Devices
         </button>
-        <div className='ui middle aligned list'>
+        <div className='ui middle aligned divided list'>
           {Object.keys(this.state).map(key => {
             return (
               // <div className='item'>
