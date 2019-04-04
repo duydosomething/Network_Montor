@@ -1,5 +1,6 @@
 import sys
 sys.path.insert(1, '../../')
+sys.path.insert(0, './pySrc/')
 # Use latest version of Eel from parent directory
 
 import os
@@ -10,6 +11,10 @@ import nmap
 import ipaddress
 import socket
 import netifaces
+import CompareThread
+
+
+c = None
 
 nm = nmap.PortScanner()
 netmask = '/24'
@@ -27,21 +32,15 @@ def getDeviceInfo():
     deviceInfo["serialNumber"] = allOutput["serialNumber"]
     return deviceInfo
 
-# @eel.expose                         # Expose this function to JavaScript
-# def say_hello_py(x):
-#     # Print to Python console
-#     print('Hello from %s' % x)
-#     # Call a JavaScript function
-#     eel.say_hello_js('Python {from within say_hello_py()}!')
+@eel.expose
+def start_compare():
+    global c
+    c = CompareThread.CompareThread()
+    c.start()
 
-
-# @eel.expose
-# def pick_file(folder):
-#     folder = os.path.expanduser(folder)
-#     if os.path.isdir(folder):
-#         return random.choice(os.listdir(folder))
-#     else:
-#         return '{} is not a valid folder'.format(folder)
+@eel.expose()
+def stop_compare():
+    c.stop()
 
 def get_cidr():
     curr_ip = get_ip_address()[1]
