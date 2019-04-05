@@ -1,5 +1,6 @@
 import threading
 import time
+import eel
 
 class CompareThread(threading.Thread):
     def __init__(self):
@@ -13,11 +14,12 @@ class CompareThread(threading.Thread):
     def stopped(self):
         return self._stop_event.is_set()
 
+    @eel.expose
     def run(self):
         print "running"
 
         while not self.stopped():
             #print self._stop_event
-            print "THREAD IS STILL GOING"
+            eel.update_output('FROM PYTHON\n')
             
             time.sleep(1)
