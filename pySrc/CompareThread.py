@@ -5,12 +5,15 @@ import nmap
 import ipaddress
 import socket
 import netifaces
+import datetime
 
 
 class CompareThread(threading.Thread):
-    def __init__(self):
+    def __init__(self, init_list):
         super(CompareThread, self).__init__()
         self._stop_event = threading.Event()
+        self.init_list = init_list
+        print self.init_list 
 
     def stop(self):
         print "STOPPING THREAD"
@@ -34,24 +37,23 @@ class CompareThread(threading.Thread):
     def run(self):
         print "running"
         nm = nmap.PortScanner()
-        results = nm.scan(hosts=self.get_cidr(), arguments='-sn')['scan']
-        prev_result_list = [key for key,value in results.iteritems()]
+        
         while not self.stopped():
             none_removed = True
             none_added = True
-            #print self._stop_event
+            
             curr_results = nm.scan(hosts=self.get_cidr(), arguments='-sn')['scan']
             curr_result_list = [key for key,value in curr_results.iteritems()]
             for item in curr_result_list:
-                if item not in prev_result_list:
-                    eel.update_output('%s has been added\n' % item)
+                if item not in self.init_list:
+                    eel.update_output('[%s] %s has been added\n' % (datetime.datetime.now(), item))
                     none_added = False
-            for item in prev_result_list:
+            for item in self.init_list:
                 if item not in curr_result_list:
-                    eel.update_output('%s not found\n' % item)
+                    eel.update_output('[%s] %s not found\n' % (datetime.datetime.now(), item))
                     none_removed = False
             if none_removed and none_added:
-                eel.update_output('No changes were seen\n')
-            #eel.update_output('FROM PYTHON\n')
+                eel.update_output('[%s] No changes were seen\n' % datetime.datetime.now())
+            
             
             time.sleep(5)

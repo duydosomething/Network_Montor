@@ -19,11 +19,13 @@ c = None
 nm = nmap.PortScanner()
 netmask = '/24'
 cidr = ''
+init_list = []
 @eel.expose
 def getDeviceInfo():
     default_gateway = get_ip_address()[0]
     jnap = jnaplib.JnapClient()
     jnap.configure(url="http://%s/JNAP" % default_gateway, username="admin", password="admin")
+    
     deviceInfo = {}
     allOutput = jnap.call("GetDeviceInfo")["output"]
     deviceInfo["firmwareVersion"] = allOutput["firmwareVersion"]
@@ -34,13 +36,15 @@ def getDeviceInfo():
 
 @eel.expose
 def start_compare():
-    global c
-    c = CompareThread.CompareThread()
+    global c, init_list
+    
+    c = CompareThread.CompareThread(init_list)
     c.start()
 
 @eel.expose()
 def stop_compare():
     c.stop()
+    c.join()
 
 def get_cidr():
     curr_ip = get_ip_address()[1]
@@ -56,8 +60,12 @@ def get_ip_address():
 
 @eel.expose
 def get_scan_results():
+    global init_list
     nm.scan(hosts=get_cidr(), arguments='-sn')
-    print nm._scan_result['scan']
+    init_dict = nm._scan_result['scan']
+    init_list = [key for key,value in init_dict.iteritems()]
+    
+    
     return nm._scan_result['scan']
 
 def start_eel(develop):
