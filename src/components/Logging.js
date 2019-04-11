@@ -12,6 +12,9 @@ class Logging extends React.Component {
 		this.setState({ output: this.state.output.concat(message) });
 	};
 
+	getOuput = () => {
+		return this.state.output;
+	};
 	startCompare = () => {
 		eel.start_compare();
 	};
@@ -21,6 +24,7 @@ class Logging extends React.Component {
 	};
 	render() {
 		window.eel.expose(this.updateOutput, "update_output");
+		window.eel.expose(this.getOuput, "get_output");
 		return (
 			<div className='ui form'>
 				<div className='field'>

@@ -34,6 +34,9 @@ class CompareThread(threading.Thread):
         curr_ip = self.get_ip_address()[1]
         return str(ipaddress.ip_network(unicode(curr_ip+'/24', 'utf-8'), strict=False))
 
+    def get_current_datetime(self):
+        return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
     def run(self):
         print "running"
         nm = nmap.PortScanner()
@@ -46,14 +49,14 @@ class CompareThread(threading.Thread):
             curr_result_list = [key for key,value in curr_results.iteritems()]
             for item in curr_result_list:
                 if item not in self.init_list:
-                    eel.update_output('[%s] %s has been added\n' % (datetime.datetime.now(), item))
+                    eel.update_output('[%s] %s has been added\n' % (self.get_current_datetime(), item))
                     none_added = False
             for item in self.init_list:
                 if item not in curr_result_list:
-                    eel.update_output('[%s] %s not found\n' % (datetime.datetime.now(), item))
+                    eel.update_output('[%s] %s not found\n' % (self.get_current_datetime(), item))
                     none_removed = False
             if none_removed and none_added:
-                eel.update_output('[%s] No changes were seen\n' % datetime.datetime.now())
+                eel.update_output('[%s] No changes were seen\n' % self.get_current_datetime())
             
             
             time.sleep(5)

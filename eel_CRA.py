@@ -15,11 +15,8 @@ import CompareThread
 
 
 c = None
-
-nm = nmap.PortScanner()
-netmask = '/24'
-cidr = ''
 init_list = []
+
 @eel.expose
 def getDeviceInfo():
     default_gateway = get_ip_address()[0]
@@ -37,7 +34,7 @@ def getDeviceInfo():
 @eel.expose
 def start_compare():
     global c, init_list
-    
+    print eel.get_input_info()()
     c = CompareThread.CompareThread(init_list)
     c.start()
 
@@ -48,7 +45,7 @@ def stop_compare():
 
 def get_cidr():
     curr_ip = get_ip_address()[1]
-    return str(ipaddress.ip_network(unicode(curr_ip+netmask, 'utf-8'), strict=False))
+    return str(ipaddress.ip_network(unicode(curr_ip+'/24', 'utf-8'), strict=False))
 
 def get_ip_address():
     gateways = netifaces.gateways()
@@ -61,6 +58,7 @@ def get_ip_address():
 @eel.expose
 def get_scan_results():
     global init_list
+    nm = nmap.PortScanner()
     nm.scan(hosts=get_cidr(), arguments='-sn')
     init_dict = nm._scan_result['scan']
     init_list = [key for key,value in init_dict.iteritems()]
