@@ -12,6 +12,7 @@ import ipaddress
 import socket
 import netifaces
 import CompareThread
+import SaveLogs
 
 
 c = None
@@ -34,11 +35,16 @@ def getDeviceInfo():
 @eel.expose
 def start_compare():
     global c, init_list
-    print eel.get_input_info()()
+    print eel.get_router_info()()
     c = CompareThread.CompareThread(init_list)
     c.start()
 
-@eel.expose()
+@eel.expose
+def save_log():
+    print SaveLogs.save_log()
+
+
+@eel.expose
 def stop_compare():
     c.stop()
     c.join()

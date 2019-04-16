@@ -6,7 +6,7 @@ class TestArea extends React.Component {
     return (
       <div className='ui segment'>
         <div className='ui two column divided very relaxed grid'>
-          <div className='column'>
+          <div className='column' id='devices'>
             <Devices />
           </div>
           <div className='column'>

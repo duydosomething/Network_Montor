@@ -3,7 +3,12 @@
 }
 
 #scroll {
+
     height: 300px;
     max-height: 500px;
     overflow-y: scroll;
+}
+
+#devices {
+    max-width: 400px;
 }

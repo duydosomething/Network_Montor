@@ -7,7 +7,7 @@ eel.set_host("ws://localhost:8080");
 class Devices extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { devices: "filler" };
+    this.state = {};
   }
   getDevices = async () => {
     let n = await eel.get_scan_results()();
