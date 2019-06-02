@@ -5,7 +5,6 @@ sys.path.insert(0, './pySrc/')
 
 import os
 import random
-import jnaplib
 import eel
 import nmap
 import ipaddress
@@ -18,19 +17,19 @@ import SaveLogs
 c = None
 init_list = []
 
-@eel.expose
-def getDeviceInfo():
-    default_gateway = get_ip_address()[0]
-    jnap = jnaplib.JnapClient()
-    jnap.configure(url="http://%s/JNAP" % default_gateway, username="admin", password="admin")
+# @eel.expose
+# def getDeviceInfo():
+#     default_gateway = get_ip_address()[0]
+#     jnap = jnaplib.JnapClient()
+#     jnap.configure(url="http://%s/JNAP" % default_gateway, username="admin", password="admin")
     
-    deviceInfo = {}
-    allOutput = jnap.call("GetDeviceInfo")["output"]
-    deviceInfo["firmwareVersion"] = allOutput["firmwareVersion"]
-    deviceInfo["modelNumber"] = allOutput["modelNumber"]
-    deviceInfo["hardwareVersion"] = allOutput["hardwareVersion"]
-    deviceInfo["serialNumber"] = allOutput["serialNumber"]
-    return deviceInfo
+#     deviceInfo = {}
+#     allOutput = jnap.call("GetDeviceInfo")["output"]
+#     deviceInfo["firmwareVersion"] = allOutput["firmwareVersion"]
+#     deviceInfo["modelNumber"] = allOutput["modelNumber"]
+#     deviceInfo["hardwareVersion"] = allOutput["hardwareVersion"]
+#     deviceInfo["serialNumber"] = allOutput["serialNumber"]
+#     return deviceInfo
 
 @eel.expose
 def start_compare():
