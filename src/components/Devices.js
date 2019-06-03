@@ -1,40 +1,48 @@
 import React from "react";
-import DeviceItem from "./DeviceItem";
-import { Button, Accordion, Item } from "semantic-ui-react";
+
+import { Button, Accordion } from "semantic-ui-react";
 
 export const eel = window.eel;
 eel.set_host("ws://localhost:8080");
 
 class Devices extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
+	// constructor(props) {
+	// 	super(props);
+	// }
 
 	getDevices = async () => {
 		let n = await eel.get_scan_results()();
 		for (let [key, value] of Object.entries(n)) {
 			if (value["addresses"]["mac"]) {
-				this.setState({ [key]: value["addresses"]["mac"] });
-			} else {
-				this.setState({ [key]: "SELF" });
+				// this.props.updateList({
+				// 	[key]: { mac: value["addresses"]["mac"], status: "up" }
+				// });
+
+				this.props.updateList(key, value["addresses"]["mac"], "up");
 			}
 		}
-		this.setState({ devices: JSON.stringify(n) });
-		console.log(n);
+
+		// this.setState({ devices: JSON.stringify(n) });
+		// console.log(n);
 	};
 	render() {
+		const panels = Object.keys(this.props.devices).map(key => ({
+			key: key,
+			title: {
+				content: key,
+				icon: {
+					name: "circle",
+					color: this.props.devices[key]["status"] === "up" ? "green" : "red"
+				}
+			},
+			content: this.props.devices[key]["mac"]
+		}));
 		return (
 			<div>
-				<Button color='blue' onClick={this.getDevices}>
+				<Button primary onClick={this.getDevices}>
 					Get Devices
 				</Button>
-
-				<Item.Group divided id='scroll'>
-					{Object.keys(this.state).map(key => {
-						return <DeviceItem device={key} />;
-					})}
-				</Item.Group>
+				<Accordion id='scroll' panels={panels} exclusive={false} />
 			</div>
 		);
 	}

@@ -4,3 +4,9 @@ Network Monitor uses nmap to scan the network for connected clients. It will the
 
 ## Quick Start
 
+yarn start
+python -m eel_CRA.py web
+
+## TODO
+
+Convert everything to use semantic-ui-react

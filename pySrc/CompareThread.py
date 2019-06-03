@@ -13,7 +13,7 @@ class CompareThread(threading.Thread):
         super(CompareThread, self).__init__()
         self._stop_event = threading.Event()
         self.init_list = init_list
-        print self.init_list 
+        #print self.init_list 
 
     def stop(self):
         print "STOPPING THREAD"
@@ -40,22 +40,30 @@ class CompareThread(threading.Thread):
     def run(self):
         print "running"
         nm = nmap.PortScanner()
-        
+        missing_set = set()
         while not self.stopped():
-            none_removed = True
-            none_added = True
+            # none_removed = True
+            # none_added = True
             
             curr_results = nm.scan(hosts=self.get_cidr(), arguments='-sn')['scan']
             curr_result_list = [key for key,value in curr_results.iteritems()]
-            for item in curr_result_list:
-                if item not in self.init_list:
-                    eel.update_output('[%s] %s has been added\n' % (self.get_current_datetime(), item))
-                    none_added = False
+            # for item in curr_result_list:
+            #     if item not in self.init_list:
+            #         eel.update_output('[%s] %s has been added\n' % (self.get_current_datetime(), item))
+            #         none_added = False
+            if missing_set:
+                for missing in missing_set.copy():
+                    if missing in curr_result_list:
+                        eel.update_output('[%s] %s has rejoined the network\n' % (self.get_current_datetime(), missing))
+                        eel.update_status(missing, 'up')
+                        missing_set.remove(missing)
             for item in self.init_list:
                 if item not in curr_result_list:
                     eel.update_output('[%s] %s not found\n' % (self.get_current_datetime(), item))
-                    none_removed = False
-            if none_removed and none_added:
+                    eel.update_status(item, 'down')
+                    missing_set.add(item)
+                    
+            if len(missing_set) == 0:
                 eel.update_output('[%s] No changes were seen\n' % self.get_current_datetime())
             
             

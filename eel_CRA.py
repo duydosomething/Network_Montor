@@ -17,24 +17,10 @@ import SaveLogs
 c = None
 init_list = []
 
-# @eel.expose
-# def getDeviceInfo():
-#     default_gateway = get_ip_address()[0]
-#     jnap = jnaplib.JnapClient()
-#     jnap.configure(url="http://%s/JNAP" % default_gateway, username="admin", password="admin")
-    
-#     deviceInfo = {}
-#     allOutput = jnap.call("GetDeviceInfo")["output"]
-#     deviceInfo["firmwareVersion"] = allOutput["firmwareVersion"]
-#     deviceInfo["modelNumber"] = allOutput["modelNumber"]
-#     deviceInfo["hardwareVersion"] = allOutput["hardwareVersion"]
-#     deviceInfo["serialNumber"] = allOutput["serialNumber"]
-#     return deviceInfo
-
 @eel.expose
 def start_compare():
     global c, init_list
-    print eel.get_router_info()()
+    #print eel.get_router_info()()
     c = CompareThread.CompareThread(init_list)
     c.start()
 
@@ -67,7 +53,6 @@ def get_scan_results():
     nm.scan(hosts=get_cidr(), arguments='-sn')
     init_dict = nm._scan_result['scan']
     init_list = [key for key,value in init_dict.iteritems()]
-    
     
     return nm._scan_result['scan']
 

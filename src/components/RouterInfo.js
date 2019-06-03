@@ -1,5 +1,6 @@
 import React from "react";
 import LabelItem from "./LabelItem";
+import { Segment } from "semantic-ui-react";
 export const eel = window.eel;
 
 eel.set_host("ws://localhost:8080");
@@ -35,7 +36,7 @@ class RouterInfo extends React.Component {
 	render() {
 		window.eel.expose(this.getRouterInfo, "get_router_info");
 		return (
-			<div className='ui segment'>
+			<Segment ui>
 				<LabelItem
 					id='routerField'
 					label='Model'
@@ -64,7 +65,7 @@ class RouterInfo extends React.Component {
 					placeholder='Serial Number'
 					onChange={e => this.handleChange("serialNumber", e)}
 				/>
-			</div>
+			</Segment>
 		);
 	}
 }
