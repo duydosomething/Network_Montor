@@ -37,8 +37,11 @@ class CompareThread(threading.Thread):
     def get_current_datetime(self):
         return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
+    
     def run(self):
+        scan_interval = int(eel.get_scan_interval()())
         print "running"
+        eel.update_output('[%s] Settings set to scan every %s seconds\n' % (self.get_current_datetime(), int(scan_interval)))
         nm = nmap.PortScanner()
         missing_set = set()
         while not self.stopped():
@@ -67,4 +70,4 @@ class CompareThread(threading.Thread):
                 eel.update_output('[%s] No changes were seen\n' % self.get_current_datetime())
             
             
-            time.sleep(5)
+            time.sleep(scan_interval)

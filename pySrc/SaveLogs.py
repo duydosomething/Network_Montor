@@ -13,8 +13,11 @@ def save_log():
         os.makedirs(OUTPUT_FOLDER)
         result_log = os.path.join(OUTPUT_FOLDER, "Result-"+ current_time+".txt")
         router_info = eel.get_router_info()()
-        output = eel.get_output()()
-        fp = open(result_log,'a')
+        
+        output = str(eel.get_output()())
+        
+        fp = open(result_log,'w+')
+        fp.seek(0)
         fp.write('Model Number: %s\n' % router_info['modelNumber'])
         fp.write('Hardware Version: %s\n' % router_info['hardwareVersion'])
         fp.write('Firmware: %s\n' % router_info['firmwareVersion'])
