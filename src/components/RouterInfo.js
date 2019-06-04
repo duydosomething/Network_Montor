@@ -38,28 +38,28 @@ class RouterInfo extends React.Component {
 		return (
 			<Segment ui>
 				<LabelItem
-					id='routerField'
+					id='routerInfoSettingField'
 					label='Model'
 					value={this.state.modelNumber}
 					placeholder='Model Number'
 					onChange={e => this.handleChange("modelNumber", e)}
 				/>
 				<LabelItem
-					id='routerField'
+					id='routerInfoSettingField'
 					label='Firmware'
 					value={this.state.firmwareVersion}
 					placeholder='Firmware Version'
 					onChange={e => this.handleChange("firmwareVersion", e)}
 				/>
 				<LabelItem
-					id='routerField'
+					id='routerInfoSettingField'
 					label='HW Version'
 					value={this.state.hardwareVersion}
 					placeholder='Hardware Version'
 					onChange={e => this.handleChange("hardwareVersion", e)}
 				/>
 				<LabelItem
-					id='routerField'
+					id='routerInfoSettingField'
 					label='Serial Number'
 					value={this.state.serialNumber}
 					placeholder='Serial Number'
