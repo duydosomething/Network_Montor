@@ -11,6 +11,7 @@ class Devices extends React.Component {
 	// }
 
 	getDevices = async () => {
+		this.props.reset();
 		let n = await eel.get_scan_results()();
 		for (let [key, value] of Object.entries(n)) {
 			if (value["addresses"]["mac"]) {

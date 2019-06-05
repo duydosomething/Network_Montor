@@ -1,11 +1,4 @@
-import threading
-import time
-import eel
-import nmap
-import ipaddress
-import socket
-import netifaces
-import datetime
+import threading, time, eel, nmap, ipaddress, socket, netifaces, datetime
 
 
 class CompareThread(threading.Thread):
@@ -45,6 +38,7 @@ class CompareThread(threading.Thread):
         nm = nmap.PortScanner()
         missing_set = set()
         while not self.stopped():
+            
             # none_removed = True
             # none_added = True
             
