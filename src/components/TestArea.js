@@ -3,8 +3,6 @@ import Devices from "./Devices";
 import Logging from "./Logging";
 import { Grid } from "semantic-ui-react";
 
-const initalState = {};
-
 class TestArea extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +10,8 @@ class TestArea extends React.Component {
   }
 
   updateStatus = (device, status) => {
-    let newState = Object.assign({}, this.state);
+    let newState = Object.assign({}, this.state.devices);
+    console.log(newState);
     newState[device].status = status;
     this.setState(newState);
   };

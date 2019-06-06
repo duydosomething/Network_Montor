@@ -21,7 +21,11 @@ class Devices extends React.Component {
         // });
 
         //this.props.updateList(key, value["addresses"]["mac"], "up");
-        devices[key] = { mac: value["addresses"]["mac"], status: "up" };
+        devices[key] = {
+          mac: value["addresses"]["mac"],
+          status: "up",
+          name: value["hostnames"][0]["name"]
+        };
       }
     }
     this.props.updateList(devices);
@@ -39,7 +43,11 @@ class Devices extends React.Component {
           color: this.props.devices[key]["status"] === "up" ? "green" : "red"
         }
       },
-      content: this.props.devices[key]["mac"]
+      content:
+        "MAC: \n" +
+        this.props.devices[key]["mac"] +
+        "\nName: " +
+        this.props.devices[key]["name"]
     }));
     return (
       <div>

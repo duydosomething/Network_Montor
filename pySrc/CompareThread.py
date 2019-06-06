@@ -43,6 +43,7 @@ class CompareThread(threading.Thread):
             # none_added = True
             
             curr_results = nm.scan(hosts=self.get_cidr(), arguments='-sn')['scan']
+            #print curr_results
             curr_result_list = [key for key,value in curr_results.iteritems()]
             # for item in curr_result_list:
             #     if item not in self.init_list:
