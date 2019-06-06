@@ -6,44 +6,48 @@ import { Grid } from "semantic-ui-react";
 const initalState = {};
 
 class TestArea extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
+  constructor(props) {
+    super(props);
+    this.state = { devices: {} };
+  }
 
-	updateStatus = (device, status) => {
-		let newState = Object.assign({}, this.state);
-		newState[device].status = status;
-		this.setState(newState);
-	};
+  updateStatus = (device, status) => {
+    let newState = Object.assign({}, this.state);
+    newState[device].status = status;
+    this.setState(newState);
+  };
 
-	updateList = (device, mac, status) => {
-		this.setState({ [device]: { mac, status } });
-	};
+  updateList = newDict => {
+    console.log(newDict);
+    this.setState({ devices: newDict });
+  };
 
-	reset = () => {
-		this.setState(initalState);
-		console.log(this.state);
-	};
-	render() {
-		return (
-			<div className='ui segment'>
-				<div className='ui two column divided very relaxed grid'>
-					<Grid.Column id='devices'>
-						<Devices
-							devices={this.state}
-							updateList={this.updateList}
-							updateStatus={this.updateStatus}
-							reset={this.reset}
-						/>
-					</Grid.Column>
-					<Grid.Column>
-						<Logging devices={this.state} updateStatus={this.updateStatus} />
-					</Grid.Column>
-				</div>
-			</div>
-		);
-	}
+  reset = () => {
+    this.setState({ devices: {} });
+    console.log(this.state);
+  };
+  render() {
+    return (
+      <div className='ui segment'>
+        <div className='ui two column divided very relaxed grid'>
+          <Grid.Column id='devices'>
+            <Devices
+              devices={this.state.devices}
+              updateList={this.updateList}
+              updateStatus={this.updateStatus}
+              reset={this.reset}
+            />
+          </Grid.Column>
+          <Grid.Column>
+            <Logging
+              devices={this.state.devices}
+              updateStatus={this.updateStatus}
+            />
+          </Grid.Column>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default TestArea;
